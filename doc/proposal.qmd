@@ -1,7 +1,7 @@
 ---
-title: "Proposal: [Your project name]"
+title: "Proposal: Salary Prediction and Analysis"
 subtitle: "DATA 450 Capstone"
-author: "[Your Name]"
+author: "Nicholas Nemkov"
 date: today
 date-format: long
 bibliography: references.bib
