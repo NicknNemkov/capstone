@@ -20,9 +20,9 @@ A person's salary is determined using various pieces of personal information. Fa
 There are multiple datasets used for this project:
 
 
-  ### adult.data
+  ## adult.data
 
-citation:
+Becker, Barry and Ronny Kohavi. "Adult." UCI Machine Learning Repository, 1996, https://doi.org/10.24432/C5XW20.
 
 adult.data contains the following variables:
 
@@ -41,11 +41,11 @@ adult.data contains the following variables:
 * native-country: Country of birth.
 * salary: This is the target variable, represents categories (<=50k or >50k) in USD. 
 
-  ### Ask A Manager Salary Survey 2021 (Responses) - Form Responses 1.csv
+  ## Ask A Manager Salary Survey 2021 (Responses) - Form Responses 1.csv
 
-citation:
+"Ask a Manager Salary Survey." TidyTuesday, 2021, https://github.com/rfordatascience/tidytuesday/blob/main/data/2021/2021-05-18/readme.md.
 
-This dataset will be used for its salary numbers column. 
+The data consists of responses given by many people on various questions concerning their jobs. In particular, one column will be used for its salary numbers. 
 
 * "What is your annual salary?": Represents a numberical values of yearly salary. Currency varies for people, this will all be converted to USD in the data processing. 
 
@@ -70,7 +70,7 @@ estimate how many hours each question will take to complete.]
 1. Does working longer days result in a high salary? Is a job more demanding based on the level of education? Using a scatterplot, the annual salary in USD can be plotted against the weekly hours worked. In turn the points are colored by the level of education. To create a more presentable visual, education level will be grouped into 3 categories (Primary, Secondary, Higher). 
 Estimated time: ~7 hours
 
-2. Is there a noticable trend between a person's salary and their sex? What about their race? Several visuals will be implemented. First, the data will be divided into male and female dataframes. The average salary will be calculated for males and female, this will be plotted on a bar graph. As for race, similar steps will be taken to create a bar graph (data divided by race and averages calculated).
+2. Is there a noticable trend between a person's salary and their sex? What about their race or age? Several visuals will be implemented. First, the data will be divided into male and female dataframes. The average salary will be calculated for males and female, this will be plotted on a bar graph. As for race and age, similar steps will be taken to create two more bar graphs (data divided by race and averages calculated).
 Estimated time: ~5 hours
 
 3. What characteristics makes a person have a high salary, and with what accuracy can a salary be predicted for a person? A linear regression model will be created, data will be split into training and testing sets, and the accuracy of the model will be recorded. Also, the feature coefficients will be noted for determining which features are most important in increasing the salary.
