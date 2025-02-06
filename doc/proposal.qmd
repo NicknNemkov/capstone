@@ -19,18 +19,34 @@ A person's salary is determined using various pieces of personal information. Fa
 
 There are multiple datasets used for this project:
 
-  The first dataset
-[In this section, desribe the dataset(s). This includes things like where you
-obtained the dataset. Include a full citation, as specified 
-[here](https://guides.lib.umich.edu/c.php?g=282964&p=3285995). Describe how the
-data was obtained by the data owner/curator, as best as you can. List the 
-variables that you plan to use in your analysis, for example:
+  ### adult.data
 
-* weight: The patient's weight (kg)
-* sex: The patient's sex, male or female
-* age: The patient's age (months)
+citation
 
-]
+adult.data contains the following variables:
+
+* age: continuous.
+* workclass: Private, Self-emp-not-inc, Self-emp-inc, Federal-gov, Local-gov, State-gov, Without-pay, Never-worked.
+* education: Bachelors, Some-college, 11th, HS-grad, Prof-school, Assoc-acdm, Assoc-voc, 9th, 7th-8th, 12th, Masters, 1st-4th, 10th, Doctorate, 5th-6th, Preschool.
+* education-num: Continuous, numerical representation of education column.
+* marital-status: Married-civ-spouse, Divorced, Never-married, Separated, Widowed, Married-spouse-absent, Married-AF-spouse.
+* occupation: Tech-support, Craft-repair, Other-service, Sales, Exec-managerial, Prof-specialty, Handlers-cleaners, Machine-op-inspct, Adm-clerical, Farming-fishing, Transport-moving, Priv-house-serv, Protective-serv, Armed-Forces.
+* relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried.
+* race: White, Asian-Pac-Islander, Amer-Indian-Eskimo, Other, Black.
+* sex: Female, Male.
+* capital-gain: continuous.
+* capital-loss: continuous.
+* hours-per-week: continuous.
+* native-country: Country of birth.
+* salary: This is the target variable, represents categories (<=50k or >50k) in USD. 
+
+  ### Ask A Manager Salary Survey 2021 (Responses) - Form Responses 1.csv
+
+citation
+
+This dataset will be used for its salary numbers. 
+
+* "What is your annual salary?": Represents a numberical values of yearly salary. Currency varies for people, this will all be converted to USD in the data processing. 
 
 # Data Acquisition and Processing
 
@@ -48,53 +64,51 @@ question. Include the specific steps you will take, what form the answer will
 take (a number? table? visualization? model? Give all the specifics), and 
 estimate how many hours each question will take to complete.]
 
-1. Is smoking correlated with diabetes? To answer this, I will create a filled
-bar plot, with the left bar representing non-smokers, the middle bar
-representing people who smoke moderately, and the right bar representing heavy
-smokers. The bars will be the same height, and each bar will be
-colored two colors based on the proportion of patients in the group who do or
-do not have diabetes.
+1. Does working longer days result in a high salary? Is a job more demanding based on the level of education? Using a scatterplot, the annual salary in USD can be plotted against the weekly hours worked. In turn the points are colored by the level of education. To create a more presentable visual, education level will be grouped into 3 categories (Primary, Secondary, Higher). 
+Estimated time: ~7 hours
 
-2. Question 2? Plan for question 2.
+2. Is there a noticable trend between a person's salary and their sex? What about their race? Several visuals will be implemented. First, the data will be divided into male and female dataframes. The average salary will be calculated for males and female, this will be plotted on a bar graph. As for race, similar steps will be taken to create a bar graph (data divided by race and averages calculated).
+Estimated time: ~5 hours
 
-3. Question 3? Plan for question 3.
-
-4. etc.
+3. What characteristics makes a person have a high salary, and with what accuracy can a salary be predicted for a person? A linear regression model will be created, data will be split into training and testing sets, and the accuracy of the model will be recorded. Also, the feature coefficients will be noted for determining which features are most important in increasing the salary.
+Estimated time: ~9 hours
 
 # Work plan
 
-[Fill in the list below with a plan for what you will do each week, starting 2/10. You should
-have around 7 hours worth of work each week. Writing work counts. Several tasks
-have already been filled in for you.]
+**Week 4 (2/10 - 2/16):** 
 
-**Week 4 (2/10 - 2/16):** [Just an example: 
-
-* Data tidying and recoding (4 hours)
-* Question 2 (4 hours).]
+* import necessary datasets, perform cleaning, and populate salary column with numbers   (4 hours)
+* Begin work on Question 1 (3 hours).
 
 **Week 5 (2/17 - 2/23):**
 
+* Finish all necessary visuals for Question 1 (4 hours)
+* Begin coding for Question 2 (3 hours)
+
 **Week 6 (2/24 - 3/2):**
+
+* Finish code for Question 2 (2 hours)
+* Prepare data for regression model for Question 3 (5 hours)
 
 **Week 7 (3/3 - 3/9):**
 
 * Presentation prep and practice (4 hours)
+* Test the model (Question 3) and interpret results (3 hours)
 
 **Week 8 (3/10 - 3/16):** *Presentations given on Wed-Thu 3/12-3/13.*
 
 * Poster prep (4 hours)
 * Presentation peer review (1.5 hours)
+* Start writing report
 
 **Week 9 (3/24 - 3/30):** *Poster Draft 1 due Monday morning 3/24 at 9am. Poster Draft 2 due Sunday night 3/30.*
 
 * Peer feedback (2 hours)
-
 * Poster revisions (1.5 hours)
 
 **Week 10 (3/31 - 4/6):** *Final Poster due Sunday 4/6.*
 
 * Peer feedback (1.5 hours)
-
 * Poster revisions (2 hours)
 
 **Week 11 (4/7 - 4/13):**
