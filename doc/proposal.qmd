@@ -16,11 +16,9 @@ jupyter: python3
 A person's salary is determined using various pieces of personal information. Factors such as education level, marital status, and country of birth can lend valuable understanding to an potential employer. These insights help set competitive wages, assist in salary negotiations, and create fair laws toward wage equality. Through careful data analysis with the use of machine learning and visualizations, it is possible to predict a person's salary using their personal information. The visualizations and predictions will show potential trends in people based on their characteristics and help envision a base wage for a future employee, creating an efficient part of the hiring process. 
 
 # Dataset
-
 There are multiple datasets used for this project:
 
-
-  ## adult.data
+## adult.data
 
 Becker, Barry and Ronny Kohavi. "Adult." UCI Machine Learning Repository, 1996, https://doi.org/10.24432/C5XW20.
 
@@ -41,7 +39,7 @@ adult.data contains the following variables:
 * native-country: Country of birth.
 * salary: This is the target variable, represents categories (<=50k or >50k) in USD. 
 
-  ## Ask A Manager Salary Survey 2021 (Responses) - Form Responses 1.csv
+## Ask A Manager Salary Survey 2021 (Responses) - Form Responses 1.csv
 
 "Ask a Manager Salary Survey." TidyTuesday, 2021, https://github.com/rfordatascience/tidytuesday/blob/main/data/2021/2021-05-18/readme.md.
 
@@ -80,7 +78,7 @@ Estimated time: ~9 hours
 
 **Week 4 (2/10 - 2/16):** 
 
-* import necessary datasets, perform cleaning, and populate salary column with numbers   (4 hours)
+* import necessary datasets, perform cleaning, and populate salary column with numbers  (4 hours)
 * Begin work on Question 1 (3 hours).
 
 **Week 5 (2/17 - 2/23):**
@@ -106,17 +104,23 @@ Estimated time: ~9 hours
 
 **Week 9 (3/24 - 3/30):** *Poster Draft 1 due Monday morning 3/24 at 9am. Poster Draft 2 due Sunday night 3/30.*
 
-* Peer feedback (2 hours)
-* Poster revisions (1.5 hours)
+* Peer feedback (2.5 hours)
+* Poster revisions (2.5 hours)
+* Continue writing report (1.5 hours)
 
 **Week 10 (3/31 - 4/6):** *Final Poster due Sunday 4/6.*
 
 * Peer feedback (1.5 hours)
-* Poster revisions (2 hours)
+* Poster revisions (3 hours)
+* Continue writing report (2.5 hours)
 
 **Week 11 (4/7 - 4/13):**
 
+* Tidy up report and code (7 hours)
+
 **Week 12 (4/14 - 4/20):**
+
+* write notes for blog post (6.5 hours)
 
 **Week 13 (4/21 - 4/27):** *Blog post draft 1 due Sunday night 4/28.*
 [All project work should be done by the end of this 
