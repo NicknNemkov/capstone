@@ -13,10 +13,13 @@ jupyter: python3
 
 # Introduction
 
-[This section should contain background and introduction to your general topic.]
+A person's salary is determined using various pieces of personal information. Factors such as education level, marital status, and country of birth can lend valuable understanding to an potential employer. These insights help set competitive wages, assist in salary negotiations, and create fair laws toward wage equality. Through careful data analysis with the use of machine learning and visualizations, it is possible to predict a person's salary using their personal information. The visualizations and predictions will show potential trends in people based on their characteristics and help envision a base wage for a future employee, creating an efficient part of the hiring process. 
 
 # Dataset
 
+There are multiple datasets used for this project:
+
+  The first dataset
 [In this section, desribe the dataset(s). This includes things like where you
 obtained the dataset. Include a full citation, as specified 
 [here](https://guides.lib.umich.edu/c.php?g=282964&p=3285995). Describe how the
