@@ -19,9 +19,10 @@ A person's salary is determined using various pieces of personal information. Fa
 
 There are multiple datasets used for this project:
 
+
   ### adult.data
 
-citation
+citation:
 
 adult.data contains the following variables:
 
@@ -42,9 +43,9 @@ adult.data contains the following variables:
 
   ### Ask A Manager Salary Survey 2021 (Responses) - Form Responses 1.csv
 
-citation
+citation:
 
-This dataset will be used for its salary numbers. 
+This dataset will be used for its salary numbers column. 
 
 * "What is your annual salary?": Represents a numberical values of yearly salary. Currency varies for people, this will all be converted to USD in the data processing. 
 
@@ -55,6 +56,8 @@ anything more complicated than a simple download). Discuss what data
 processing steps will be needed, such as recoding variables, data cleaning,
 data tidying, imputing missing values, etc. See sections 1c, 1d, 1e in the 
 "Good Enough Practices" paper.]
+
+Before any operations are started, all NA values will either be replace or removes. Most of the data is taken from the adult.data file. The final column in this file (salary) currently contains two categories (<=50k or >50k) to represent is th person's salary is less than or equal to $50,000 or is greater than that. Using the numerical salaries ot the "Ask A Manager Salary Survey 2021 (Responses) - Form Responses 1.csv" file, the values will be converted to USD. Then, the numerical values will randomly populate the salary column in adult.data, with values being inserted based on the previous categories (ex. person with salary <=50k might get a value of 48056). 
 
 # Research Questions and Methodology
 
@@ -99,7 +102,7 @@ Estimated time: ~9 hours
 
 * Poster prep (4 hours)
 * Presentation peer review (1.5 hours)
-* Start writing report
+* Start writing report (2.5 hours)
 
 **Week 9 (3/24 - 3/30):** *Poster Draft 1 due Monday morning 3/24 at 9am. Poster Draft 2 due Sunday night 3/30.*
 
