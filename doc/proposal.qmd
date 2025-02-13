@@ -13,7 +13,7 @@ jupyter: python3
 
 # Introduction
 
-A person's salary is determined using various pieces of personal information. Factors such as education level, marital status, and country of birth can lend valuable understanding to an potential employer. These insights help set competitive wages, assist in salary negotiations, and create fair laws toward wage equality. Through careful data analysis with the use of machine learning and visualizations, it is possible to predict a person's salary using their personal information. The visualizations and predictions will show potential trends in people based on their characteristics and help envision a base wage for a future employee, creating an efficient part of the hiring process. 
+A person's salary is determined using various pieces of personal information. Factors such as education level, marital status, and country of birth can lend valuable understanding to current college students on their future careers. These insights help set competitive attitudes, assist in salary negotiations, and create new approaches toward wage equality. Through careful data analysis with the use of machine learning and visualizations, it is possible to predict a person's salary category using their personal information. The visualizations and predictions will show potential trends in people based on their characteristics and profession and help envision a base wage for a person, useful in advertizing potential career choices to students.
 
 # Dataset
 There are multiple datasets used for this project:
@@ -41,13 +41,51 @@ adult.data contains the following variables:
 * native-country: Country of birth.
 * salary: This is the target variable, represents categories (<=50k or >50k) in USD. 
 
-## Ask A Manager Salary Survey 2021 (Responses) - Form Responses 1.csv
+## state_M2023_dl.xlsx
 
-"Ask a Manager Salary Survey." TidyTuesday, 2021, https://github.com/rfordatascience/tidytuesday/blob/main/data/2021/2021-05-18/readme.md.
+U.S. Bureau of Labor Statistics. (2023). Occupational Employment and Wage Statistics (OEWS): New York. Retrieved from https://www.bls.gov/oes/current/oes_ny.htm
 
-The data consists of responses given by many people on various questions concerning their jobs. In particular, one column will be used for its salary numbers. 
+This dataset contains the 2023 occupational employment and wage estimates, calculated with data collected from employers in all industry sectors in metropolitan and nonmetropolitan areas in the US (including US territories).
 
-* "What is your annual salary?": Represents a numberical values of yearly salary. Currency varies for people, this will all be converted to USD in the data processing. 
+This dataset contains the following columns:
+
+* area:	U.S. (99), state FIPS code, Metropolitan Statistical Area (MSA) or New England City and Town Area (NECTA) code, or OEWS-specific nonmetropolitan area code 
+* area_title:	Area name 
+
+*area_type: 1= U.S.; 2= State; 3= U.S. Territory; 4= Metropolitan Statistical Area (MSA) or New England City and Town Area (NECTA); 6= Nonmetropolitan Area 
+
+*prim_state:	The primary state for the given area. "US" is used for the national estimates.
+
+*naics:	North American Industry Classification System (NAICS) code for the given industry. 
+*naics_title:	North American Industry Classification System (NAICS) title for the given industry.
+
+*i_group:	Industry level. Indicates cross-industry or NAICS sector, 3-digit, 4-digit, 5-digit, or 6-digit industry. For industries that OEWS no longer publishes at the 4-digit NAICS level, the “4-digit” designation indicates the most detailed industry breakdown available: either a standard NAICS 3-digit industry or an OEWS-specific combination of 4-digit industries. Industries that OEWS has aggregated to the 3-digit NAICS level (for example, NAICS 327000) will appear twice, once with the “3-digit” and once with the “4-digit” designation. 
+*own_code:	Ownership type: 1= Federal Government; 2= State Government; 3= Local Government; 123= Federal, State, and Local Government; 235=Private, State, and Local Government; 35 = Private and Local Government; 5= Private; 57=Private, Local Government Gambling Establishments (Sector 71), and Local Government Casino Hotels (Sector 72); 58= Private plus State and Local Government Hospitals; 59= Private and Postal Service; 1235= Federal, State, and Local Government and Private Sector 
+*occ_code:	The 6-digit Standard Occupational Classification (SOC) code or OEWS-specific code for the occupation 
+*occ_title:	SOC title or OEWS-specific title for the occupation
+*o_group:	SOC occupation level. For most occupations, this field indicates the standard SOC major, minor, broad, and detailed levels, in addition to all-occupations totals. For occupations that OEWS no longer publishes at the SOC detailed level, the “detailed” designation indicates the most detailed data available: either a standard SOC broad occupation or an OEWS-specific combination of detailed occupations. Occupations that OEWS has aggregated to the SOC broad occupation level will appear in the file twice, once with the “broad” and once with the “detailed” designation.
+*tot_emp:	Estimated total employment rounded to the nearest 10 (excludes self-employed).
+*emp_prse:	Percent relative standard error (PRSE) for the employment estimate. PRSE is a measure of sampling error, expressed as a percentage of the corresponding estimate. Sampling error occurs when values for a population are estimated from a sample survey of the population, rather than calculated from data for all members of the population. Estimates with lower PRSEs are typically more precise in the presence of sampling error.
+*jobs_1000:	The number of jobs (employment) in the given occupation per 1000 jobs in the given area. Only available for the state and MSA estimates; otherwise, this column is blank. 
+*loc quotient:	The location quotient represents the ratio of an occupation’s share of employment in a given area to that occupation’s share of employment in the U.S. as a whole. For example, an occupation that makes up 10 percent of employment in a specific metropolitan area compared with 2 percent of U.S. employment would have a location quotient of 5 for the area in question. Only available for the state, metropolitan area, and nonmetropolitan area estimates; otherwise, this column is blank.
+*pct_total:	Percent of industry employment in the given occupation. Percents may not sum to 100 because the totals may include data for occupations that could not be published separately. Only available for the national industry estimates; otherwise, this column is blank. 
+*pct_rpt:	Percent of establishments reporting the given occupation for the cell. Only available for the national industry estimates; otherwise, this column is blank. 
+*h_mean:	Mean hourly wage
+*a_mean:	Mean annual wage 
+*mean_prse:	Percent relative standard error (PRSE) for the mean wage estimate. PRSE is a measure of sampling error, expressed as a percentage of the corresponding estimate. Sampling error occurs when values for a population are estimated from a sample survey of the population, rather than calculated from data for all members of the population. Estimates with lower PRSEs are typically more precise in the presence of sampling error.
+*h_pct10:	Hourly 10th percentile wage
+*h_pct25:	Hourly 25th percentile wage
+*h_median:	Hourly median wage (or the 50th percentile)
+*h_pct75:	Hourly 75th percentile wage
+*h_pct90:	Hourly 90th percentile wage
+*a_pct10:	Annual 10th percentile wage
+*a_pct25:	Annual 25th percentile wage
+*a_median:	Annual median wage (or the 50th percentile)
+*a_pct75:	Annual 75th percentile wage
+*a_pct90:	Annual 90th percentile wage
+*annual: 	Contains "TRUE" if only annual wages are released. The OEWS program releases only annual wages for some occupations that typically work fewer than 2,080 hours per year, but are paid on an annual basis, such as teachers, pilots, and athletes.
+*hourly: 	Contains "TRUE" if only hourly wages are released. The OEWS program releases only hourly wages for some occupations that typically work fewer than 2,080 hours per year and are paid on an hourly basis, such as actors, dancers, and musicians and singers.
+
 
 # Data Acquisition and Processing
 
