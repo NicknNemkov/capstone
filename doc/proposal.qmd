@@ -22,6 +22,8 @@ There are multiple datasets used for this project:
 
 Becker, Barry and Ronny Kohavi. "Adult." UCI Machine Learning Repository, 1996, https://doi.org/10.24432/C5XW20.
 
+This dataset, extracted from the 1994 Census database, contains a 15 columns and 32561 observations. Each row represents a person, with 14 of their personal characteristics (age, sex, marital status, etc.) and a categorical target column stating whether their salary is less than or equal to $50k or greater than $50k. The majority of the employees are born in the United States, with others being from all around the world.
+
 adult.data contains the following variables:
 
 * age: continuous.
@@ -49,7 +51,7 @@ The data consists of responses given by many people on various questions concern
 
 # Data Acquisition and Processing
 
-The data must be prepared before any operations are started, all NA values will either be replace or removes. Most of the data is taken from the adult.data file. The final column in this file (salary) currently contains two categories (<=50k or >50k) to represent if the person's salary is less than or equal to $50,000 or is greater than that. Using the numerical salaries ot the "Ask A Manager Salary Survey 2021 (Responses) - Form Responses 1.csv" file, the values will be converted to USD. Then, the numerical values will randomly populate the salary column in adult.data, with values being inserted based on the previous categories (ex. person with salary <=50k might get a value of 48056). 
+The data must be prepared before any operations are started, all NA values will either be replaced or removed. Most of the data is taken from the adult.data file. The final column in this file (salary) currently contains two categories (<=50k or >50k) to represent if the person's salary is less than or equal to $50,000 or is greater than that. Using the numerical salaries ot the "Ask A Manager Salary Survey 2021 (Responses) - Form Responses 1.csv" file, the values will be converted to USD. Then, the numerical values will randomly populate the salary column in adult.data, with values being inserted based on the previous categories (ex. person with salary <=50k might get a value of 48056). 
 
 # Research Questions and Methodology
 
