@@ -89,18 +89,21 @@ This dataset contains the following columns:
 
 # Data Acquisition and Processing
 
-The data must be prepared before any operations are started, all NA values will either be replaced or removed. 
+Both datasets must be prepared before any operations are started, all NA values will either be replaced or removed. Each dataset will be explored and all unnecessary columns will be removed. The datasets will be used separately from each other to answer any research questions. 
 
 # Research Questions and Methodology
 
-1. Does working longer days result in a high salary? Is a job more demanding based on the level of education? Using a scatterplot, the annual salary in USD can be plotted against the weekly hours worked. In turn the points are colored by the level of education. To create a more presentable visual, education level will be grouped into 3 categories (Primary, Secondary, Higher). 
+1. Is a job more demanding based on the higher level of education and the age of the person? This is a task for the adult.data file. Using a scatterplot, the age can be plotted against the weekly hours worked. In turn the points are colored by the level of education. To create a more presentable visual, education level will be grouped into 3 categories (Primary, Secondary, Higher). 
 Estimated time: ~7 hours
 
-2. Is there a noticable trend between a person's salary and their sex? What about their race or age? Several visuals will be implemented. First, the data will be divided into male and female dataframes. The average salary will be calculated for males and female, this will be plotted on a bar graph. As for race and age, similar steps will be taken to create two more bar graphs (data divided by race and averages calculated).
+2. Is there a noticable trend between a person's salary and their sex? What about their race? Multiple visuals will be implemented using the adult.data dataset. The total occurence of each sex will be plotted using a pie chart, with the total being divided by the salary categories (<=50k and >50k). As for race, there will be a stacked bar plot showing the different races, each column representing the total number of race occurences and being stacked by the salary categories. 
 Estimated time: ~5 hours
 
-3. What characteristics makes a person have a salary greater than $50k or less than $50k, and with what accuracy can it be predicted for a person? A logistic regression model will be created using the adult.data file, the salary column will be the target variable and the rest of the column the features. The data will be standardized and split into training and testing sets, and the accuracy of the model will be recorded. Also, the feature coefficients will be noted for determining which features are most important in increasing the salary.
+3. What characteristics makes a person have a salary greater than $50k or less than $50k, and with what accuracy can it be predicted for a person? A logistic regression model will be created using the adult.data file, the salary column will be the target variable and the rest of the column the features. The data will be standardized and split into training and testing sets, and the accuracy of the model will be recorded using precision and recall. Also, the feature coefficients will be noted for determining which features are most important in increasing the salary.
 Estimated time: ~9 hours
+
+4. Which US state that the greatest average annual wage and hourly wage? Using the state_M2023_dl.xlsx dataset, the data will be filtered to only contain US states. It will then be further cleaned to only contain a occ_title of 'all occupations'. Then, two bar plots will be made to visualize all 50 states with their corresponding mean annual wages and mean hourly wages. 
+Estimated time: ~5 hours
 
 # Work plan
 
@@ -128,27 +131,29 @@ Estimated time: ~9 hours
 
 * Poster prep (4 hours)
 * Presentation peer review (1.5 hours)
-* Start writing report (2.5 hours)
+* Begin work on Question 4 (2.5 hours)
 
 **Week 9 (3/24 - 3/30):** *Poster Draft 1 due Monday morning 3/24 at 9am. Poster Draft 2 due Sunday night 3/30.*
 
 * Peer feedback (2.5 hours)
 * Poster revisions (2.5 hours)
-* Continue writing report (1.5 hours)
+* Finish Question 4 code and interpret (2.5 hours)
+
 
 **Week 10 (3/31 - 4/6):** *Final Poster due Sunday 4/6.*
 
 * Peer feedback (1.5 hours)
 * Poster revisions (3 hours)
-* Continue writing report (2.5 hours)
+* Start writing report (2.5 hours)
 
 **Week 11 (4/7 - 4/13):**
 
-* Tidy up report and code (7 hours)
+* Tidy up report and code (4 hours)
+* Continue with report (3 hours)
 
 **Week 12 (4/14 - 4/20):**
 
-* write notes for blog post (6.5 hours)
+* write notes for blog post (4.5 hours)
 
 **Week 13 (4/21 - 4/27):** *Blog post draft 1 due Sunday night 4/28.*
 [All project work should be done by the end of this 
