@@ -102,14 +102,14 @@ Estimated time: ~5 hours
 3. What characteristics makes a person have a salary greater than $50k or less than $50k, and with what accuracy can it be predicted for a person? A logistic regression model will be created using the adult.data file, the salary column will be the target variable and the rest of the column the features. The data will be standardized and split into training and testing sets, and the accuracy of the model will be recorded using precision and recall. Also, the feature coefficients will be noted for determining which features are most important in increasing the salary.
 Estimated time: ~9 hours
 
-4. Which US state that the greatest average annual wage and hourly wage? Using the state_M2023_dl.xlsx dataset, the data will be filtered to only contain US states. It will then be further cleaned to only contain a occ_title of 'all occupations'. Then, two bar plots will be made to visualize all 50 states with their corresponding mean annual wages and mean hourly wages. 
+4. Which US state that the greatest average annual wage and hourly wage? Using the state_M2023_dl.xlsx dataset, the data will be filtered to only contain US states. It will then be further cleaned to only contain a occ_title of 'all occupations'. Then, two bar plots will be made to visualize all 50 states with their corresponding mean annual wages and mean hourly wages. Lastly, to visualize the locations of the US states, two choropleth maps will be created to 
 Estimated time: ~5 hours
 
 # Work plan
 
 **Week 4 (2/10 - 2/16):** 
 
-* import necessary datasets, perform cleaning, and populate salary column with numbers  (4 hours)
+* import necessary datasets, perform cleaning  (4 hours)
 * Begin work on Question 1 (3 hours).
 
 **Week 5 (2/17 - 2/23):**
