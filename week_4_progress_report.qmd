@@ -1,0 +1,42 @@
+---
+title: "Week 4 Progress Report"
+subtitle: "DATA 450 Capstone"
+author: "Nick Nemkov"
+date: today
+date-format: "[Week ending: ] M/D/YY"
+number-sections: false
+format:
+  pdf: default
+---
+
+# Time Log
+
+| Day  | Time  | \# Hours | Task(s) | GH Commit(s) |
+|------|-------|----------|---------|--------|
+| Mon.  |  |  |  |  |
+| Tue.  |  |  |  |  |
+| Wed.  |  |  |  |  |
+| Thu.  |  |  |  |  |
+| Fri.  |  |  |  |  |
+| Sat.  |  |  |  |  |
+| Sun.  | [1-5pm] ; [5:30-7:30pm]  | [4] ; [2] | [Load in datasets, check for NA values] ; [Begin separating data into categories.] | [Link 1](https://github.com/NicknNemkov/capstone/commit/35206c8a718f4e6b92d756c3c74bd2a7ecb15549#diff-e721d618a8189d7f6a28e8ce2cb1d8b4795e1d2ecb2ee564fa698cc32fef8427) ; [Link 2](https://github.com/NicknNemkov/capstone/commit/bb3e81a9aa7f24fde8c73230c7d412ea5b85f7d5)  |
+
+: {tbl-colwidths="[10, 15, 12, 50, 13]"}
+
+**Total \# of hours worked this week: [6]**
+
+## What you accomplished (or attempted) this week:
+
+I have loaded in the adult.data and stat_M2023_dl.xlsx files and began performing EDA on the dataframes. The adult.data file needed a manual input of a header. Direct paths to the files were used to read in the files to a Jupyter notebook file (salary_predictions.ipynb). For the EDA, I have checked the adult.data file for NA values. I have also began separating the education levels in adult_df (the adult.data dataframe) into 4 categories (Preschool, Primary, Secondary, and Higher). A scatter plot visualization will follow.
+
+## Any setbacks/roadblocks you experienced:
+
+I need to further revise the questions for the proposal. I will be adding more visualizations and sub-questions to expand questions 1, 2, and 4. Due to this I will need to do more work next week for the first research question as I was working to expand the questions.
+
+## What you plan to work on next:
+
+Once I divide adult_df into the 4 education categories, I will get into plotting the data based on Question 1. Throughout next week, I will finish Question 1 and begin working on Question 2.
+
+## Are you on track? If not, how will you get back on track?
+
+I am not on track due to revisions needed to be done to the proposal. I will continue throughout Sunday to add to the proposal research questions. Next, week I will continue wokr on Question 1. I will try to put in extra work to complete both questions 1 and 2 for next week.
