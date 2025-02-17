@@ -1,0 +1,42 @@
+---
+title: "Week 4 Progress Report"
+subtitle: "DATA 450 Capstone"
+author: "Nick Nemkov"
+date: today
+date-format: "[Week ending: ] M/D/YY"
+number-sections: false
+format:
+  pdf: default
+---
+
+# Time Log
+
+| Day  | Time  | \# Hours | Task(s) | GH Commit(s) |
+|------|-------|----------|---------|--------|
+| Mon.  |  |  |  |  |
+| Tue.  |  |  |  |  |
+| Wed.  |  |  |  |  |
+| Thu.  |  |  |  |  |
+| Fri.  |  |  |  |  |
+| Sat.  |  |  |  |  |
+| Sun.  | [2-6pm]  | [1] | [Load in datasets, check for NA values] | [Link 1](https://github.com/NicknNemkov/capstone/commit/35206c8a718f4e6b92d756c3c74bd2a7ecb15549#diff-e721d618a8189d7f6a28e8ce2cb1d8b4795e1d2ecb2ee564fa698cc32fef8427)  |
+
+: {tbl-colwidths="[10, 15, 12, 50, 13]"}
+
+**Total \# of hours worked this week: [4]**
+
+## What you accomplished (or attempted) this week:
+
+I have loaded in the adult.data and stat_M2023_dl.xlsx files and began performing EDA on the dataframes. The adult.data file needed a manual input of a header. Direct paths to the files were used to read in the files to a Jupyter notebook file. I also began to check the adult.data dataset for any NA values. 
+
+## Any setbacks/roadblocks you experienced:
+
+Need to revise questions for proposal. 
+
+## What you plan to work on next:
+
+Question 1 will be started next week. Possibly finished by the end of next week.
+
+## Are you on track? If not, how will you get back on track?
+
+I am not on track due to revisions needed to be done to the proposal. I will continue throughout Sunday to add to the proposal research questions. Next, week I will begin the actual research questions.
