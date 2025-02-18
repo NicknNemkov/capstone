@@ -13,7 +13,7 @@ jupyter: python3
 
 # Introduction
 
-A person's salary is determined using various pieces of personal information. Factors such as education level, marital status, and country of birth can lend valuable understanding to current college students on their future careers. These insights help set competitive attitudes, assist in salary negotiations, and create new approaches toward wage equality. Through careful data analysis with the use of machine learning and visualizations, it is possible to predict a person's salary category using their personal information. The visualizations and predictions will show potential trends in people based on their characteristics and profession and help envision a base wage for a person, useful in advertizing potential career choices to students.
+A person's wage is influenced by various personal characteristics and broader state-level economic factors. Attributes such as education level, marital status, and work experience can play a crucial role in determining individual earnings, while state-level wages provide insight into regional economic trends and job market conditions. Understanding these factors can help individuals make informed career decisions, negotiate salaries effectively, and identify potential wage disparities across different states. Through data analysis, machine learning, and visualizations, we can explore how personal characteristics impact wages and compare these trends across states. These insights can highlight common patterns in earnings, reveal disparities, and provide valuable guidance for job seekers and policymakers.
 
 # Dataset
 There are multiple datasets used for this project:
@@ -86,10 +86,20 @@ This dataset contains the following columns:
 * annual: 	Contains "TRUE" if only annual wages are released. The OEWS program releases only annual wages for some occupations that typically work fewer than 2,080 hours per year, but are paid on an annual basis, such as teachers, pilots, and athletes.
 * hourly: 	Contains "TRUE" if only hourly wages are released. The OEWS program releases only hourly wages for some occupations that typically work fewer than 2,080 hours per year and are paid on an hourly basis, such as actors, dancers, and musicians and singers.
 
+## MST-EST2023-ALLDATA.csv
+
+U.S. Census Bureau. (2023). Annual State Population Totals: 2020-2023 [Dataset]. Retrieved from https://www.census.gov/data/tables/time-series/demo/popest/2020s-state-total.html#v2023
+
+This U.S. Cansus Bureau dataset collects the estimated Components of Resident Population Change, and Rates of the Components of Resident Population Change for the United States, States, District of Columbia, and Puerto Rico from 2020 to 2023.
+
+I will be using a single column, for use in Question 5:
+
+* POPESTIMATE2023: 2023 resident total population estimate
+
 
 # Data Acquisition and Processing
 
-Both datasets must be prepared before any operations are started, all NA values will either be replaced or removed. Each dataset will be explored and all unnecessary columns will be removed. The datasets will be used separately from each other to answer any research questions. 
+Both datasets must be prepared before any operations are started, all NA values will either be replaced or removed. Each dataset will be explored and all unnecessary columns will be removed. Datasets will be used together for certain research questions. 
 
 # Research Questions and Methodology
 
@@ -105,7 +115,16 @@ Estimated time: ~9 hours
 4. Which US state has the greatest average annual wage and hourly wage? Using the state_M2023_dl.xlsx dataset, the data will be filtered to only contain US states. It will then be further cleaned to only contain a occ_title of 'all occupations'. Then, two bar plots will be made to visualize all 50 states with their corresponding mean annual wages and mean hourly wages. In addition, to visualize the locations of the US states, two choropleth maps will be created to show a gradient of both annual and hourly average wages throughout the US.
 Estimated time: ~6 hours
 
-5. To further look into the US state wages, do wages vary greater between metropolitan and non-metropolitan areas? 
+5. Do high employment levels indicate high average salaries (both hourly and annual)? This question uses the filtered state_M2023_dl.xlsx dataset (only 'All Occupations' for OCC_TITLE). A set of bubble charts can visualize annual or hourly mean wage against the TOT_EMP (total employment) in a state, the size of the bubbles representing the median salary (annual or hourly). In order for the data to be compared fairly, the TOT_EMP of each state has to be normalized by being divided by the 2023 total state estimated population (POPESTIMATE2023) from the NST-EST2023-ALLDATA.csv table. 
+Estimated Time: ~6 hours
+
+6. IT Job Analysis: Which IT profession is most common across the US states? To prepare the data, the state_M2023_dl.xlsx dataset will be filtered to include only IT professions and only US states. A ridgeline plot will then be constructed to visualize the distribution of IT occupations across states based on the number of jobs per 1,000 total jobs, colored by the specific IT job. This will allow us to observe which IT professions are widely distributed across all states.
+
+Additionally, the difference between A_PCT90 and A_MEDIAN (90th percentile and median annual IT wages) will be calculated for each IT occupation. This will help assess income disparity within IT professions, revealing whether the wage distribution is relatively even or if there is a significant gap between mid-level and top earners.
+Estimated Time: ~6 hours
+
+7. Case Study: Does a rural state like Nebraska share similar professions to New York and New Jersey? This specific question is asked to see what jobs are common in an relatively urban area (NY and NJ), and a rural area (Nebraska). The state_M2023_dl.xlsx dataset will be filtered to contain only professions in NY, NJ, and NE. There will be two visual: a ridgeline plot and a horizontal bar plot (both using the JOBS_1000 column for finding the most common job). Ridgeline will be used for the distribution of all jobs across the three states. As for the bar plot, I wish to filter the top 5 job for each state and visualize which specific job is most common in all three states.
+Estimated Time: ~4 hours
 
 # Work plan
 
@@ -126,36 +145,36 @@ Estimated time: ~6 hours
 
 **Week 7 (3/3 - 3/9):**
 
-* Presentation prep and practice (4 hours)
 * Test the model (Question 3) and interpret results (3 hours)
+* Begin Question 4 (2 hours)
 
 **Week 8 (3/10 - 3/16):** *Presentations given on Wed-Thu 3/12-3/13.*
 
 * Poster prep (4 hours)
 * Presentation peer review (1.5 hours)
-* Begin work on Question 4 (2.5 hours)
+* Finish Question 4 (4 hours)
 
 **Week 9 (3/24 - 3/30):** *Poster Draft 1 due Monday morning 3/24 at 9am. Poster Draft 2 due Sunday night 3/30.*
 
 * Peer feedback (2.5 hours)
 * Poster revisions (2.5 hours)
-* Finish Question 4 code and interpret (2.5 hours)
+* Begin Question 5 (2 hours)
 
 
 **Week 10 (3/31 - 4/6):** *Final Poster due Sunday 4/6.*
 
 * Peer feedback (1.5 hours)
 * Poster revisions (3 hours)
-* Start writing report (2.5 hours)
+* Finish Question 5 (4 hours)
 
 **Week 11 (4/7 - 4/13):**
 
-* Tidy up report and code (4 hours)
-* Continue with report (3 hours)
+* Do Question 6 (6 hours)
 
 **Week 12 (4/14 - 4/20):**
 
-* 
+* Do Question 7 and tidy up rest of code (5 hours)
+* Begin final report (2 hours)
 
 **Week 13 (4/21 - 4/27):** *Blog post draft 1 due Sunday night 4/28.*
 [All project work should be done by the end of this 
