@@ -1,0 +1,42 @@
+---
+title: "Week 5 Progress Report"
+subtitle: "DATA 450 Capstone"
+author: "Nick Nemkov"
+date: today
+date-format: "[Week ending: ] M/D/YY"
+number-sections: false
+format:
+  pdf: default
+---
+
+# Time Log
+
+| Day  | Time  | \# Hours | Task(s) | GH Commit(s) |
+|------|-------|----------|---------|--------|
+| Mon.  |  |  |  |  |
+| Tue.  |  |  |  |  |
+| Wed.  |  |  |  |  |
+| Thu.  |  |  |  |  |
+| Fri.  |  |  |  |  |
+| Sat.  |  |  |  |  |
+| Sun.  | 12am-1am ; 1pm-7pm | 1hrs ; 6hrs | data sorting for Q1 ; Did Q1 and began Q2 | [Link 1](https://github.com/NicknNemkov/capstone/commit/)  |
+
+: {tbl-colwidths="[10, 15, 12, 50, 13]"}
+
+**Total \# of hours worked this week: [7]**
+
+## What you accomplished (or attempted) this week:
+
+I was able to complete all visualization for Question 1 of my proposal. I have currently started Question 2 and am in the process of creating the first visualization for this question (the plotly display is not fully working, need to keep working). 
+
+## Any setbacks/roadblocks you experienced:
+
+The scatterplot for the first visual of Q1 seems to show no trends, the points are everywhere. I will need to divide up the data by education category to see if there will be trends for individual education level scatterplots.
+
+## What you plan to work on next:
+
+I wish to finish Question 2 and begin working on Question 3 by the end of next week. If need be, I will also format my visualizations for Question 1 to be more presentable.
+
+## Are you on track? If not, how will you get back on track?
+
+I am currently on track for my project, following the schedule!
