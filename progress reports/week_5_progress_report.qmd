@@ -1,5 +1,5 @@
 ---
-title: "Week 5 Progress Report"
+title: "Week 6 Progress Report"
 subtitle: "DATA 450 Capstone"
 author: "Nick Nemkov"
 date: today
@@ -19,7 +19,7 @@ format:
 | Thu.  |  |  |  |  |
 | Fri.  |  |  |  |  |
 | Sat.  |  |  |  |  |
-| Sun.  | 12am-1am ; 1pm-7pm | 1hrs ; 6hrs | data sorting for Q1 ; Did Q1 and began Q2 | [Link](https://github.com/NicknNemkov/capstone/commit/736e539ce76b8d0f82db21b0d6b2c687e4477df6#diff-e721d618a8189d7f6a28e8ce2cb1d8b4795e1d2ecb2ee564fa698cc32fef8427)  |
+| Sun.  | 12am-1am ; 1pm-7pm | 1hrs ; 6hrs | Finished Q2 and split train/test data for Q3 | [Link](https://github.com/NicknNemkov/capstone/commit/736e539ce76b8d0f82db21b0d6b2c687e4477df6#diff-e721d618a8189d7f6a28e8ce2cb1d8b4795e1d2ecb2ee564fa698cc32fef8427)  |
 
 : {tbl-colwidths="[10, 15, 12, 50, 13]"}
 
@@ -27,7 +27,7 @@ format:
 
 ## What you accomplished (or attempted) this week:
 
-I was able to complete all visualization for Question 1 of my proposal. I have currently started Question 2 and am in the process of creating the first visualization for this question (the plotly display is not fully working, need to keep working). 
+I have finished Question 2 (all visualizations). I have begun working on the machine learning part of my project (Question 3), I currently 
 
 ## Any setbacks/roadblocks you experienced:
 
@@ -35,8 +35,8 @@ The scatterplot for the first visual of Q1 seems to show no trends, the points a
 
 ## What you plan to work on next:
 
-I wish to finish Question 2 and begin working on Question 3 by the end of next week. If need be, I will also format my visualizations for Question 1 to be more presentable.
+I wish to finish Question 3 and begin working on Question 3 by the end of next week. If need be, I will also format my visualizations for Question 1 to be more presentable.
 
 ## Are you on track? If not, how will you get back on track?
 
-I am currently on track for my project, following the schedule!
+I am currently on track for my project.
