@@ -19,19 +19,19 @@ format:
 | Thu.  |  |  |  |  |
 | Fri.  |  |  |  |  |
 | Sat.  |  |  |  |  |
-| Sun.  | 12am-1am ; 1pm-7pm | 1hrs ; 6hrs | Finished Q2 and split train/test data for Q3 | [Link](https://github.com/NicknNemkov/capstone/commit/736e539ce76b8d0f82db21b0d6b2c687e4477df6#diff-e721d618a8189d7f6a28e8ce2cb1d8b4795e1d2ecb2ee564fa698cc32fef8427)  |
+| Sun.  | 12am-2am ; 1pm-6:30pm | 1hrs ; 6hrs | Finished Q2 and prepared data for Q3 logistic regression | [Link]()  |
 
 : {tbl-colwidths="[10, 15, 12, 50, 13]"}
 
-**Total \# of hours worked this week: [7]**
+**Total \# of hours worked this week: [8.5]**
 
 ## What you accomplished (or attempted) this week:
 
-I have finished Question 2 (all visualizations). I have begun working on the machine learning part of my project (Question 3), I currently 
+I have finished Question 2 (all visualizations). I have begun working on the machine learning part of my project (Question 3). I currently have one-hot encoded all categorical features, standardized numerical features, and split the data 70/30 into training and testing sets. 
 
 ## Any setbacks/roadblocks you experienced:
 
-I created filled bar plots for Question 2, but that didn't show the total count of various races. I then also created a stacked bar plot with the y-axis being the total count of each race.
+I created filled bar plots for Question 2, but that didn't show the total count of various races. I then also created a stacked bar plot with the y-axis being the total count of each race. There are now a total of 4 graphs for Question 2.
 
 ## What you plan to work on next:
 
