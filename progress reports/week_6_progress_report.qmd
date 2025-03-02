@@ -19,11 +19,11 @@ format:
 | Thu.  |  |  |  |  |
 | Fri.  |  |  |  |  |
 | Sat.  |  |  |  |  |
-| Sun.  | 12am-2am ; 1pm-6:30pm | 1hrs ; 6hrs | Finished Q2 and prepared data for Q3 logistic regression | [Link]()  |
+| Sun.  | 12am-2am ; 1pm-6:30pm | 2hrs ; 5.5hrs | Finished Q2 and prepared data for Q3 logistic regression | [Link](https://github.com/NicknNemkov/capstone/commit/2ada7fe788ae4cc4daaff0831eeaa2421ce2a82f)  |
 
 : {tbl-colwidths="[10, 15, 12, 50, 13]"}
 
-**Total \# of hours worked this week: [8.5]**
+**Total \# of hours worked this week: [7.5]**
 
 ## What you accomplished (or attempted) this week:
 
