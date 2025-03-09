@@ -19,7 +19,7 @@ format:
 | Thu.  |  |  |  |  |
 | Fri.  |  |  |  |  |
 | Sat.  |  |  |  |  |
-| Sun.  | 12am-1am ; 1pm-7:30pm | 1hrs ; 6.5hrs | Finished Q3 and created presentation | [Link](https://github.com/NicknNemkov/capstone/commit/3e2dc60c590401a8f13db66e30c98f6183e2c513)  |
+| Sun.  | 12am-1am ; 1pm-7:30pm | 1hrs ; 6.5hrs | Finished Q3 and created presentation | [Link](https://github.com/NicknNemkov/capstone/commit/afa8944f9430d3dec1b43f53cb54d4c47614dc2e)  |
 
 : {tbl-colwidths="[10, 15, 12, 50, 13]"}
 
