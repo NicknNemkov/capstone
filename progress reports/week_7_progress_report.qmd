@@ -1,0 +1,42 @@
+---
+title: "Week 7 Progress Report"
+subtitle: "DATA 450 Capstone"
+author: "Nick Nemkov"
+date: today
+date-format: "[Week ending: ] M/D/YY"
+number-sections: false
+format:
+  pdf: default
+---
+
+# Time Log
+
+| Day  | Time  | \# Hours | Task(s) | GH Commit(s) |
+|------|-------|----------|---------|--------|
+| Mon.  |  |  |  |  |
+| Tue.  |  |  |  |  |
+| Wed.  |  |  |  |  |
+| Thu.  |  |  |  |  |
+| Fri.  |  |  |  |  |
+| Sat.  |  |  |  |  |
+| Sun.  | 12am-1am ; 1pm-7:30pm | 1hrs ; 6.5hrs | Finished Q3 and created presentation | [Link](https://github.com/NicknNemkov/capstone/commit/2ada7fe788ae4cc4daaff0831eeaa2421ce2a82f)  |
+
+: {tbl-colwidths="[10, 15, 12, 50, 13]"}
+
+**Total \# of hours worked this week: [7.5]**
+
+## What you accomplished (or attempted) this week:
+
+I have currently finished all of my logistic regression work for Question 3. I calculated the accuracy of the model, displayed a confusion matrix, and finally calculated the precision and recall of the two salary categories.
+
+## Any setbacks/roadblocks you experienced:
+
+I wasn't able to fully finish the presentation, I will be completing it at the start of next week.
+
+## What you plan to work on next:
+
+I plan on working on Question 4 and finish it before Spring Break.
+
+## Are you on track? If not, how will you get back on track?
+
+I am currently on track for my project.
