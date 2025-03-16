@@ -13,13 +13,13 @@ format:
 
 | Day  | Time  | \# Hours | Task(s) | GH Commit(s) |
 |------|-------|----------|---------|--------|
-| Mon.  | 2pm-5pm | 3hrs | Worked on presentation |  |
-| Tue.  | 10pm-1:20am | 3:20hrs | Finished presentation and practiced. |  |
+| Mon.  | 2pm-5pm | 3hrs | Worked on presentation | [Link 1](https://github.com/NicknNemkov/capstone/commit/604ff04a53004b204bf7c24d38dbfafca4b91c67) |
+| Tue.  | 10pm-1:20am | 3:20hrs | Finished presentation and practiced. | [Link 1](https://github.com/NicknNemkov/capstone/commit/604ff04a53004b204bf7c24d38dbfafca4b91c67) |
 | Wed.  |  |  |  |  |
 | Thu.  |  |  |  |  |
 | Fri.  |  |  |  |  |
-| Sat.  | 4pm-6pm | 2hrs | Began peer reviews |  |
-| Sun.  | 4pm-5:30pm | 1:30hrs | finished peer reviews |  |
+| Sat.  | 4pm-6pm | 2hrs | Began peer reviews | [Link 1](https://github.com/NicknNemkov/capstone/commit/604ff04a53004b204bf7c24d38dbfafca4b91c67) |
+| Sun.  | 4pm-5:30pm | 1:30hrs | finished peer reviews | [Link 1](https://github.com/NicknNemkov/capstone/commit/604ff04a53004b204bf7c24d38dbfafca4b91c67) |
 
 : {tbl-colwidths="[10, 15, 12, 50, 13]"}
 
