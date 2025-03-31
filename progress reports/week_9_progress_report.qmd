@@ -1,0 +1,41 @@
+---
+title: "Week 9 Progress Report"
+subtitle: "DATA 450 Capstone"
+author: "Nick Nemkov"
+date: today
+date-format: "[Week ending: ] M/D/YY"
+number-sections: false
+format:
+  pdf: default
+---
+
+# Time Log
+
+| Day  | Time  | \# Hours | Task(s) | GH Commit(s) |
+|------|-------|----------|---------|--------|
+| Mon.  |  |  |  |  |
+| Wed.  |  |  |  |  |
+| Thu.  |  |  |  |  |
+| Fri.  |  |  |  |  |
+| Sat.  |  |  |  |  |
+| Sun.  | 1pm-7:40pm | 6:40hrs | Worked on Q4 | [Link](https://github.com/NicknNemkov/capstone/commit/06a2190bf44ed6fd94aa41ad6b8b0a307c63a5a5) |
+
+: {tbl-colwidths="[10, 15, 12, 50, 13]"}
+
+**Total \# of hours worked this week: [6:40 hours]**
+
+## What you accomplished (or attempted) this week:
+
+I spent the week working on Question 4 and am wokring on the 1st draft of the poster.
+
+## Any setbacks/roadblocks you experienced:
+
+I wasn't able finish Question 4 due to bad visuals, I will choose different visuals.
+
+## What you plan to work on next:
+
+I plan on working on finishing Question 4 and revising my poster.
+
+## Are you on track? If not, how will you get back on track?
+
+I am slightly off track due to not finishing Question 4.
