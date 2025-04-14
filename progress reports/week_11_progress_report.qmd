@@ -1,0 +1,41 @@
+---
+title: "Week 11 Progress Report"
+subtitle: "DATA 450 Capstone"
+author: "Nick Nemkov"
+date: today
+date-format: "[Week ending: ] M/D/YY"
+number-sections: false
+format:
+  pdf: default
+---
+
+# Time Log
+
+| Day  | Time  | \# Hours | Task(s) | GH Commit(s) |
+|------|-------|----------|---------|--------|
+| Mon.  |  |  |  |  |
+| Wed.  |  |  |  |  |
+| Thu.  |  |  |  |  |
+| Fri.  |  |  |  |  |
+| Sat.  |  |  |  |  |
+| Sun.  | 3pm-9:44pm | 7hrs | Finished Q4 and Q5 |  |
+
+: {tbl-colwidths="[10, 15, 12, 50, 13]"}
+
+**Total \# of hours worked this week: [6:44 hours]**
+
+## What you accomplished (or attempted) this week:
+
+I finished Questions 4 and 5.
+
+## Any setbacks/roadblocks you experienced:
+
+No setbacks currently.
+
+## What you plan to work on next:
+
+I plan on working on finishing Q6 and Q7 on the next week.
+
+## Are you on track? If not, how will you get back on track?
+
+I am on track.
