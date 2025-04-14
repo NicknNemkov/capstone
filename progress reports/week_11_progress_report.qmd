@@ -18,7 +18,7 @@ format:
 | Thu.  |  |  |  |  |
 | Fri.  |  |  |  |  |
 | Sat.  |  |  |  |  |
-| Sun.  | 3pm-9:44pm | 7hrs | Finished Q4 and Q5 |  |
+| Sun.  | 3pm-9:44pm | 6:40hrs | Finished Q4 and Q5 | [Link](https://github.com/NicknNemkov/capstone/commit/95038d42fc5aebce37a7f7b8fce221fb717a1ea0) |
 
 : {tbl-colwidths="[10, 15, 12, 50, 13]"}
 
