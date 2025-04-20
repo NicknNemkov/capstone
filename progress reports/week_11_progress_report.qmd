@@ -1,5 +1,5 @@
 ---
-title: "Week 11 Progress Report"
+title: "Week 12 Progress Report"
 subtitle: "DATA 450 Capstone"
 author: "Nick Nemkov"
 date: today
@@ -17,25 +17,27 @@ format:
 | Wed.  |  |  |  |  |
 | Thu.  |  |  |  |  |
 | Fri.  |  |  |  |  |
-| Sat.  |  |  |  |  |
-| Sun.  | 3pm-9:44pm | 6:40hrs | Finished Q4 and Q5 | [Link](https://github.com/NicknNemkov/capstone/commit/95038d42fc5aebce37a7f7b8fce221fb717a1ea0) |
+| Sat.  | 7pm-12am | 5hrs | Finished Q7. | [Link](https://github.com/NicknNemkov/capstone/commit/539ebca9fce7f49a7fc34dac132d4ec95ee839d5) |
+| Sun.  | 1pm-5pm | 4hrs | Worked on Q6 | [Link]() |
 
 : {tbl-colwidths="[10, 15, 12, 50, 13]"}
 
-**Total \# of hours worked this week: [6:44 hours]**
+**Total \# of hours worked this week: [9 hours]**
 
 ## What you accomplished (or attempted) this week:
 
-I finished Questions 4 and 5.
+I finished Questions 6 and 7.
 
 ## Any setbacks/roadblocks you experienced:
 
-No setbacks currently.
+I had to change the visuals for Q6 and Q7 as opposed to the suggested ones in the proposal.
+I have not finished Q6.
 
 ## What you plan to work on next:
 
-I plan on working on finishing Q6 and Q7 on the next week.
+I have several plots for both Q6 and Q7, I want to pick the best ones only. 
+I also want to go through my code and add comments and clean it up.
 
 ## Are you on track? If not, how will you get back on track?
 
-I am on track.
+A little off track, still need to finish Q6.
