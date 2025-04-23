@@ -1,7 +1,7 @@
 ---
-title: "My awesome blog"
+title: "Wage Analysis Across States and Demographics"
 subtitle: "Spring 2025"
-author: "Prof. Yuster"
+author: "Nicholas Nemkov"
 bibliography: references.bib
 nocite: |
   @*
@@ -17,16 +17,31 @@ jupyter: python3
 ---
 
 
-![Source: Ramapo College of New Jersey](https://www.ramapo.edu/tours/wp-content/uploads/sites/344/2020/10/Fall-Arch-Straigh-Edit.jpg){fig-alt="A photo of the arch at Ramapo College."}
+![](c:\Users\nickn\Downloads\charlesdeluvio-pURnuXxm30U-unsplash.jpg){fig-alt="Money"}
 
 
-# Welcome
+## Introduction
+
+
 
 
 **Welcome** to *my* ~~super~~ SUPER awesome `blog` post!
 $$x^2 = 1$$
 
-## Quarto is cool
+## The Data
+
+```{python}
+import pandas as pd
+import numpy as np
+import matplotlib as plt
+import plotly.express as px
+
+adult_df = pd.read_csv('C:/Users/nickn/OneDrive/Desktop/Capstone Project/capstone/data/adult.data', header=None, na_values=" ?")
+
+adult_df.columns = ["age", "workclass", "fnlwgt", "education", "education-num", 
+                      "marital-status", "occupation", "relationship", "race", "sex",
+                      "capital-gain", "capital-loss", "hours-per-week", "native-country", "salary"]
+```
 
 This section was copy/pasted from various parts of the [Quarto website](https://quarto.org/docs/get-started/hello/vscode.html).
 
@@ -40,6 +55,22 @@ Note that there are five types of callouts, including:
 
 This is an example of a callout with a caption.
 :::
+
+## Research Questions
+
+## Q1
+
+## Q2
+
+## Logistic Regression
+
+## Q4
+
+## Q5
+
+## Q6
+
+## Q7 Case Study: 
 
 
 For your reference, here's an example of a Python code cell in Quarto, along with a figure that gets generated, along with a caption and a label so that it can be referred to automatically as "Figure 1" (or whatever) in the writeup.
