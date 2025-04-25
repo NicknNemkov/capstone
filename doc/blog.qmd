@@ -17,7 +17,7 @@ jupyter: python3
 ---
 
 
-![](c:\Users\nickn\Downloads\charlesdeluvio-pURnuXxm30U-unsplash.jpg){fig-alt="Money"}
+![](C:\Users\nickn\OneDrive\Desktop\Capstone Project\capstone\pictures\Clip_Art.jpg){fig-alt="Money"}
 
 
 ## Introduction
@@ -36,11 +36,16 @@ import numpy as np
 import matplotlib as plt
 import plotly.express as px
 
+# load all datasets
 adult_df = pd.read_csv('C:/Users/nickn/OneDrive/Desktop/Capstone Project/capstone/data/adult.data', header=None, na_values=" ?")
 
 adult_df.columns = ["age", "workclass", "fnlwgt", "education", "education-num", 
                       "marital-status", "occupation", "relationship", "race", "sex",
                       "capital-gain", "capital-loss", "hours-per-week", "native-country", "salary"]
+
+state_wage_stats = pd.read_excel('C:/Users/nickn/OneDrive/Desktop/Capstone Project/capstone/data/state_M2023_dl.xlsx')
+
+population = pd.read_csv('C:/Users/nickn/OneDrive/Desktop/Capstone Project/capstone/data/NST-EST2023-ALLDATA.csv')
 ```
 
 This section was copy/pasted from various parts of the [Quarto website](https://quarto.org/docs/get-started/hello/vscode.html).
