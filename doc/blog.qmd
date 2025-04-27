@@ -16,17 +16,11 @@ format:
 jupyter: python3
 ---
 
-
 ![](C:\Users\nickn\OneDrive\Desktop\Capstone Project\capstone\pictures\Clip_Art.jpg){fig-alt="Money"}
-
 
 ## Introduction
 
-
-
-
-**Welcome** to *my* ~~super~~ SUPER awesome `blog` post!
-$$x^2 = 1$$
+I plan to examine and analyze wage statistics across different demographic groups, states, and professions. 
 
 ## The Data
 
@@ -35,9 +29,14 @@ import pandas as pd
 import numpy as np
 import matplotlib as plt
 import plotly.express as px
+import warnings
+warnings.filterwarnings("ignore")
 
 # load all datasets
 adult_df = pd.read_csv('C:/Users/nickn/OneDrive/Desktop/Capstone Project/capstone/data/adult.data', header=None, na_values=" ?")
+
+# deal with NA values for adult.data
+adult_df.dropna(inplace=True)
 
 adult_df.columns = ["age", "workclass", "fnlwgt", "education", "education-num", 
                       "marital-status", "occupation", "relationship", "race", "sex",
@@ -48,7 +47,13 @@ state_wage_stats = pd.read_excel('C:/Users/nickn/OneDrive/Desktop/Capstone Proje
 population = pd.read_csv('C:/Users/nickn/OneDrive/Desktop/Capstone Project/capstone/data/NST-EST2023-ALLDATA.csv')
 ```
 
-This section was copy/pasted from various parts of the [Quarto website](https://quarto.org/docs/get-started/hello/vscode.html).
+I will be using three specific datasets:
+
+1. 
+
+2. 
+
+3. 
 
 :::{.callout-note}
 Note that there are five types of callouts, including:
@@ -61,21 +66,299 @@ Note that there are five types of callouts, including:
 This is an example of a callout with a caption.
 :::
 
-## Research Questions
+## Research and Results
 
-## Q1
+Let's look at the wage statistics through a number of research questions:
 
-## Q2
+### Question 1
+- Is a job more demanding based on the higher level of education and the age of the
+person? 
+- Does the income level of a job determine how hard a person has to work?
 
-## Logistic Regression
+We start out by first dividing the numerical categories for education in adult_data
 
-## Q4
+```{python}
+# organize lists for education categories
+preschool = [1]
+primary = [2, 3]
+secondary = [4, 5, 6, 7, 8, 9]
+higher = [10, 11, 12, 13, 14, 15, 16]
 
-## Q5
+def get_categories(number):
+    '''
+    Check if a numerical category is part of the 4 education groups.
+    '''
+    if number in preschool:
+        return "Preschool"
+    elif number in primary:
+        return "Primary"
+    elif number in secondary:
+        return "Secondary"
+    else:
+        return "Higher"
 
-## Q6
+# use get_categories function to create a new column with education categories
+adult_df['education_category'] = adult_df['education-num'].apply(get_categories)
+```
 
-## Q7 Case Study: 
+We can see from @fig-line.
+
+```{python}
+#| label: fig-line
+
+# create a decade column for easier viewing of the age
+adult_df["age_decade"] = ((adult_df["age"]) // 10) * 10
+mean_hours = adult_df.groupby(["age_decade", "education_category"])["hours-per-week"].mean().reset_index()
+
+# drop Preschool category if needed
+drop_preschool = mean_hours[mean_hours['education_category'] != 'Preschool']
+
+# Create line plot using Plotly Express
+fig = px.line(drop_preschool, x="age_decade", y="hours-per-week", color="education_category",
+              title="<b>Mean Hours Worked Per Week Against Employee Age</b>",
+              labels={"age_decade": "Age", "hours-per-week": "Mean Hours Per Week", "education_category": "Education Level"},
+              markers=True)
+
+fig.update_layout(
+    font=dict(
+        color='black'
+    ))
+
+fig.show()
+```
+
+```{python}
+#| label: fig-boxplot
+
+# boxplot of weekly hours worked against salary category
+fig = px.box(adult_df, x="salary", y="hours-per-week", color="education_category", 
+             labels={
+                     "education_category": "Education Level",
+                     "salary": "Salary Category",
+                     "hours-per-week": "Hours Worked per Week"
+                 },
+             title="Weekly Hours Against Salary Category")
+fig.show()
+```
+
+### Question 2
+
+- Is there a noticable trend between a person’s salary and their sex? 
+- What about their race?
+
+```{python}
+#| label: fig-sex_barplot
+
+# calculate total count of salary category by sex
+counts = adult_df.groupby(['sex', 'salary']).size().reset_index(name='count')
+
+# stacked bar chart
+fig_2a = px.bar(counts, x='sex', y='count', color='salary',
+                title="<b>Salary Levels Between Females and Males</b>")
+
+
+# include black font for title
+fig_2a.update_layout(
+    font=dict(
+        color='black'
+    ))
+
+fig_2a.show()
+```
+
+Now to see the spread by race.
+
+```{python}
+#| label: fig-percent_race
+
+# race occurences percentage
+race_counts = adult_df.groupby(['race', 'salary']).size().reset_index(name='count')
+race_counts['percentage'] = race_counts.groupby('race')['count'].transform(lambda x: (x / sum(x)) * 100)
+
+fig_2d = px.bar(race_counts, x='race', y='percentage', color='salary',
+                title="<b>Percentage of Salary Levels Between Races</b>")
+
+fig_2d.update_layout(
+    font=dict(
+        color='black'
+    ))
+
+fig_2d.show()
+```
+
+### Logistic Regression
+
+- What characteristics makes a person have a salary greater than $50k or less than $50k, and with what accuracy can it be predicted for a person?
+
+```{python}
+#| label: fig-logistic_accuracy
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+
+# prepare adult_df data for regression
+
+# split to features and target
+features = adult_df.drop("salary", axis=1)
+target = adult_df["salary"]
+
+# one-hot encode categorical features
+features = pd.get_dummies(features, drop_first=True)
+
+# split data 70/30 train/test
+features_train, features_test, target_train, target_test = train_test_split(features, target, test_size=0.3, random_state=42)
+
+# standardize numerical features
+scaler = StandardScaler()
+features_train = scaler.fit_transform(features_train)
+features_test = scaler.transform(features_test)
+
+# fit model
+model = LogisticRegression()
+model.fit(features_train, target_train)
+
+predictions = model.predict(features_test)
+
+print("Accuracy:\n", accuracy_score(predictions, target_test))
+print("")
+print("Classification Report:\n", classification_report(target_test, predictions))
+```
+
+Let's visualize the top 6 absolute feature coefficients!
+
+```{python}
+#| label: fig-logistic_importances
+
+# Feature importance (absolute values)
+feature_importance = np.abs(model.coef_[0])
+
+importance_df = pd.DataFrame({"Feature": features.columns, "Importance": feature_importance})
+importance_df = importance_df.sort_values(by="Importance", ascending=False)
+
+# combine one-hot encoded features into the original feature
+importance_df["Original Feature"] = importance_df["Feature"].str.split("_").str[0]
+aggregated_importance = importance_df.groupby("Original Feature")["Importance"].sum()
+aggregated_importance = aggregated_importance.sort_values(ascending=False)
+
+# feature importance bar plot
+top_5 = aggregated_importance[:6].sort_values(ascending=False).reset_index()
+top_5.columns = ['Original Feature', 'Value']
+
+# Create the bar plot
+fig = px.bar(
+    top_5,
+    x='Value',
+    y='Original Feature',
+    orientation='h',
+    title="<b>Absolute Feature Importances</b>",
+    labels={
+        "Original Feature": "Absolute Feature",
+        "Value": "Coefficient Value"
+    },
+    category_orders={
+        "Original Feature": top_5['Original Feature'].tolist()
+    }
+)
+
+fig.show()
+```
+
+### Question 4
+
+- Which US state has the greatest average annual wage and hourly wage?
+
+```{python}
+# filter state_wage_stats to only have rows with 'All Occupations' and contain US states
+filt_state_df = state_wage_stats[state_wage_stats['OCC_TITLE'].str.contains('All Occupations', case=False, na=False)]
+us_filt_state = filt_state_df[filt_state_df['AREA_TYPE'] == 2]
+
+us_filt_state['A_MEAN'] = pd.to_numeric(us_filt_state['A_MEAN'])
+us_filt_state['H_MEAN'] = pd.to_numeric(us_filt_state['H_MEAN'])
+```
+
+```{python}
+#| label: fig-choropleth_hrly_wage
+
+# for mean hourly wage
+fig_4map_a = px.choropleth(
+    us_filt_state,
+    locations="PRIM_STATE", 
+    locationmode="USA-states",  # Use U.S. states
+    color="H_MEAN",  # Value to color by
+    color_continuous_scale="Reds",  # Color scale
+    scope="usa",  # Focus on the USA
+    title="Mean Hourly Salary By State",
+    labels={"H_MEAN":"Hourly Wage", 
+            "PRIM_STATE":"State"}
+)
+
+fig_4map_a.update_layout(margin=dict(l=0, r=0, b=0, t=0),
+                  width=800, 
+                  height=480)
+
+fig_4map_a.show()
+```
+
+### Question 5
+
+- Do high employment levels indicate high average salaries (both hourly and annual)?
+
+```{python}
+# prepare population dataset
+state_population = population[population['SUMLEV'] == 40]
+state_population = state_population[state_population['NAME'] != 'Puerto Rico']  # Drop all areas that are not states
+state_population = state_population.rename(columns={'NAME': 'AREA_TITLE'})
+
+pop_merge = pd.merge(us_filt_state, state_population, on='AREA_TITLE', how='left')
+
+# create column with normalized employment rates
+pop_merge['EMPLOYMENT_RATE'] = (pop_merge['TOT_EMP'] / pop_merge['POPESTIMATE2023'])
+pop_merge['EMPLOYMENT_RATE'] = pd.to_numeric(pop_merge['EMPLOYMENT_RATE'])
+
+pop_merge['EMPLOYMENT_RATE'] = pop_merge['EMPLOYMENT_RATE'].round(4)
+```
+
+Now I want to visualize the employment rate by state.
+
+It can be noted in @fig-choropleth that for most states the employment rate is between 0.5 and 0.4.
+
+```{python}
+#| label: fig-choropleth
+
+fig_5a = px.choropleth(
+    pop_merge,
+    locations="PRIM_STATE", 
+    locationmode="USA-states",  # Use U.S. states
+    color="EMPLOYMENT_RATE",
+    color_continuous_scale="Viridis",
+    scope="usa",
+    title="Employment Rate By State",
+    labels={"EMPLOYMENT_RATE":"Employment Rate", 
+            "PRIM_STATE":"State"}
+)
+
+fig_5a.update_layout(margin=dict(l=0, r=0, b=0, t=0),
+                  width=800, 
+                  height=480)
+
+fig_5a.show()
+```
+
+
+
+
+### Question 6
+
+### Question 7 
+
+- <b>Case Study</b>: Does a rural state like Nebraska share similar professions to New York and
+New Jersey?
+
+```{python}
+
+```
 
 
 For your reference, here's an example of a Python code cell in Quarto, along with a figure that gets generated, along with a caption and a label so that it can be referred to automatically as "Figure 1" (or whatever) in the writeup.
@@ -104,3 +387,5 @@ Here's an example of citing a source [see @phil99, pp. 33-35]. Be sure the sourc
 
 
 The bibliography will automatically be generated, listing all sources in the `.bib` file.
+
+## Conclusion
