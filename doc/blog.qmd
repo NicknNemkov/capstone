@@ -346,10 +346,102 @@ fig_5a.update_layout(margin=dict(l=0, r=0, b=0, t=0),
 fig_5a.show()
 ```
 
+The bubble chart in @fig-bubble shows the 
 
+```{python}
+#| label: fig-bubble
 
+# Annual Wages
+A_filtered = pop_merge
+A_filtered[['PRIM_STATE', 'TOT_EMP', 'A_MEAN', 'A_MEDIAN']].dropna()
+
+# drop Washington DC, the outlier
+A_filtered = A_filtered[A_filtered['AREA_TITLE'] != 'District of Columbia']
+
+A_filtered['TOT_EMP'] = pd.to_numeric(A_filtered['TOT_EMP'], errors='coerce')
+A_filtered['A_MEAN'] = pd.to_numeric(A_filtered['A_MEAN'], errors='coerce')
+A_filtered['A_MEDIAN'] = pd.to_numeric(A_filtered['A_MEDIAN'], errors='coerce')
+
+fig5_b = px.scatter(A_filtered, 
+                 x='POPESTIMATE2023', 
+                 y='EMPLOYMENT_RATE', 
+                 size='A_MEAN',  # Bubble size
+                 hover_name='PRIM_STATE', 
+                 title="State Population vs. Employment",
+                 labels={'TOT_EMP': 'Total Employment', 
+                         'A_MEAN': 'Annual Mean Wage',
+                         'POPESTIMATE2023': 'Population',
+                         'EMPLOYMENT_RATE': 'Employment Rate'},
+                 size_max=20,  # Limits the max bubble size
+                 color='A_MEAN'  # Color gradient based on wages
+                )   
+
+fig5_b.show()
+```
 
 ### Question 6
+
+```{python}
+# filter data to contain only IT-related professions
+filt_state = state_wage_stats[state_wage_stats['AREA_TYPE'] == 2]
+
+it_fields = ['computer', 'data', 'programmer', 'software', 'cyber', 'network']
+pattern = '|'.join(it_fields)
+
+it_job = filt_state[filt_state['OCC_TITLE'].str.contains(pattern, case=False, na=False)]
+
+# list of non-IT jobs
+drop_jobs = ['Computer and Mathematical Occupations', 
+             'Data Entry Keyers', 
+             'Computer Occupations, All Other', 
+             'Computer, Automated Teller, and Office Machine Repairers', 
+             'Electronics Engineers, Except Computer', 
+             'Office Machine Operators, Except Computer', 
+             'Computer Numerically Controlled Tool Operators', 
+             'Computer Hardware Engineers']
+
+it_job = it_job[~it_job['OCC_TITLE'].isin(drop_jobs)]
+
+it_job['A_PCT90'] = pd.to_numeric(it_job['A_PCT90'], errors='coerce')
+it_job['A_MEDIAN'] = pd.to_numeric(it_job['A_MEDIAN'], errors='coerce')
+
+# calculate difference between 90th percentile and median annual wage
+it_job['difference_90_med'] = it_job['A_PCT90'] - it_job['A_MEDIAN']
+
+# filter for the state job with the greatest difference
+top_per_state = (
+    it_job
+    .sort_values(['OCC_TITLE', 'PRIM_STATE', 'difference_90_med'], ascending=[False, False, True])
+    .groupby('PRIM_STATE')
+    .head(1)
+)
+
+# drop 'Software Developers' job title to show only 1 job type with greatest difference
+software_analyst_df = top_per_state[top_per_state['OCC_TITLE'] != 'Software Developers']
+```
+
+```{python}
+#| label: fig-itjob
+
+fig_6a = px.choropleth(
+    software_analyst_df,
+    locations= 'PRIM_STATE',
+    locationmode="USA-states",
+    color="difference_90_med",
+    #color_continuous_scale="Viridis",
+    scope="usa",
+    title="Difference between 90th percentile and Median Annual Salaries for Software",
+    labels= {
+        "difference_90_med": "Difference",
+        "PRIM_STATE": "State"},   
+)
+
+fig_6a.update_layout(margin=dict(l=0, r=0, b=0, t=0),
+                  width=800, 
+                  height=480)
+
+fig_6a.show()
+```
 
 ### Question 7 
 
@@ -357,31 +449,74 @@ fig_5a.show()
 New Jersey?
 
 ```{python}
+# filter data for only the three states
+ny_nj_nb = ['NY', 'NJ', 'NE']
+nynjnb_df = state_wage_stats[state_wage_stats['PRIM_STATE'].isin(ny_nj_nb)]
+nynjnb_df = nynjnb_df[nynjnb_df['OCC_TITLE'] != 'All Occupations']
+nynjnb_df = nynjnb_df[nynjnb_df['JOBS_1000'] != '**']
+nynjnb_df['JOBS_1000'] = nynjnb_df['JOBS_1000'].astype(int)
 
+# dataframe of top 5 jobs per state
+top5_jobs_per_state = (
+    nynjnb_df
+    .sort_values(['PRIM_STATE', 'JOBS_1000'], ascending=[True, False])
+    .groupby('PRIM_STATE')
+    .head(5)
+)
 ```
 
-
-For your reference, here's an example of a Python code cell in Quarto, along with a figure that gets generated, along with a caption and a label so that it can be referred to automatically as "Figure 1" (or whatever) in the writeup.
-
-For a demonstration of a line plot on a polar axis, see @fig-polar.
+Refering to @fig-states
 
 ```{python}
-#| label: fig-polar
-#| fig-cap: "A line plot on a polar axis"
+#| label: fig-states
+#| fig-cap: "Top 5 Occupations by Job per 1000 in NY, NJ, and NE"
 
-import numpy as np
-import matplotlib.pyplot as plt
-
-r = np.arange(0, 2, 0.01)
-theta = 2 * np.pi * r
-fig, ax = plt.subplots(
-  subplot_kw = {'projection': 'polar'} 
+fig7_a = px.bar(
+    top5_jobs_per_state,
+    x='JOBS_1000',
+    y='OCC_TITLE',
+    color='PRIM_STATE',
+    facet_col='PRIM_STATE',
+    labels={'OCC_TITLE': 'Occupation', 'JOBS_1000': 'Jobs per 1000', 'PRIM_STATE': 'State'},
+    height=450,
+    orientation='h'
 )
-ax.plot(theta, r)
-ax.set_rticks([0.5, 1, 1.5, 2])
-ax.grid(True)
-plt.show()
+
+fig7_a.update_layout(showlegend=False)  # hide legend, not needed
+fig7_a.show()
 ```
+
+I also wanted to see if most US states share a common occupation type. Looking at @fig-oneJob, I can see that the majority of states have "Office and Administrative Support Occupations" as the most common type per 1000 jobs. There are three states that have different occupations, that being 
+
+```{python}
+#| label: fig-oneJob
+
+# filter data for most popular occupation per state
+job_df = state_wage_stats[state_wage_stats['OCC_TITLE'] != 'All Occupations']
+job_df = job_df[job_df['JOBS_1000'] != '**']
+job_df['JOBS_1000'] = job_df['JOBS_1000'].astype(int)
+
+top_job = (
+    job_df
+    .sort_values(['PRIM_STATE', 'JOBS_1000'], ascending=[True, False])
+    .groupby('PRIM_STATE')
+    .head(1)
+)
+
+fig7_b = px.choropleth(
+    top_job,
+    locations="PRIM_STATE", 
+    locationmode="USA-states",  # Use U.S. states
+    color="OCC_TITLE",
+    scope="usa",
+    title="Most Popular Occupation Type By State",
+    labels={"OCC_TITLE":"Occupation Type", 
+            "PRIM_STATE":"State"}
+)
+
+fig7_b.show()
+```
+
 
 Here's an example of citing a source [see @phil99, pp. 33-35]. Be sure the source information is entered in "BibTeX" form in the `references.bib` file.
 
