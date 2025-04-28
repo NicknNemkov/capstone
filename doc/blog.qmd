@@ -403,7 +403,7 @@ fig5_b = px.scatter(A_filtered,
                  y='A_MEAN', 
                  size='A_MEDIAN',  # Bubble size
                  hover_name='PRIM_STATE', 
-                 title="State Population vs. Employment",
+                 title="State Annual Wages vs. Employment",
                  labels={'TOT_EMP': 'Total Employment', 
                          'A_MEAN': 'Annual Mean Wage',
                          'EMPLOYMENT_RATE': 'Employment Rate',
