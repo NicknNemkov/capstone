@@ -16,11 +16,13 @@ format:
 jupyter: python3
 ---
 
-![](C:\Users\nickn\OneDrive\Desktop\Capstone Project\capstone\pictures\Clip_Art.jpg){fig-alt="Money"}
+![Source: Unsplash](https://images.unsplash.com/photo-1580227974769-5ce2c6935046?q=80&w=1443&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D){fig-alt="Money"}
 
 ## Introduction
 
-I plan to examine and analyze wage statistics across different demographic groups, states, and professions. 
+__How much money do you make?__
+
+A person’s wage is influenced by various personal characteristics and broader state-level economic factors. State-level wage statistics provide insight into regional economic trends and job market conditions. I plan to examine and analyze wage statistics across different demographic groups, states, and professions.   
 
 ## The Data
 
@@ -49,33 +51,53 @@ population = pd.read_csv('C:/Users/nickn/OneDrive/Desktop/Capstone Project/capst
 
 I will be using three specific datasets:
 
-1. 
+__1. adult.data__
 
-2. 
+```{python}
+adult_df.head()
+```
 
-3. 
+This dataset, extracted from the 1994 Census database, contains a 15 columns and 32561
+observations. Each row represents a person, with 14 of their personal characteristics (age, sex,
+marital status, etc.) and a categorical target column stating whether their salary is less than
+or equal to $50k or greater than $50k. The majority of the employees are born in the United
+States, with others being from all around the world.
 
-:::{.callout-note}
-Note that there are five types of callouts, including:
-`note`, `tip`, `warning`, `caution`, and `important`.
+
+__2. state_M2023_dl.xlsx__
+
+```{python}
+state_wage_stats.head()
+```
+
+The _state_M2023_dl.xlsx_ dataset contains the 2023 occupational employment and wage estimates, calculated with
+data collected from employers in all industry sectors in metropolitan and nonmetropolitan
+areas in the US (including US territories).
+
+__3. NST-EST2023-ALLDATA.csv__
+
+```{python}
+# I will focus on just the state populations in 2023
+population.head()
+```
+
+This U.S. Cansus Bureau dataset collects the estimated Components of Resident Population
+Change, and Rates of the Components of Resident Population Change for the United States,
+States, District of Columbia, and Puerto Rico from 2020 to 2023.
+
+:::{.callout-important}
+Only the _POPESTIMATE2023_ column will be used from NST-EST2023-ALLDATA.csv, in order to calculate the employment rate.
 :::
 
-:::{.callout-tip}
-## Tip With Caption
-
-This is an example of a callout with a caption.
-:::
 
 ## Research and Results
 
-Let's look at the wage statistics through a number of research questions:
+Now that all datasets are loaded, let's look at the wage statistics through a number of research questions:
 
 ### Question 1
 - Is a job more demanding based on the higher level of education and the age of the
 person? 
 - Does the income level of a job determine how hard a person has to work?
-
-We start out by first dividing the numerical categories for education in adult_data
 
 ```{python}
 # organize lists for education categories
@@ -101,7 +123,6 @@ def get_categories(number):
 adult_df['education_category'] = adult_df['education-num'].apply(get_categories)
 ```
 
-We can see from @fig-line.
 
 ```{python}
 #| label: fig-line
@@ -141,6 +162,10 @@ fig = px.box(adult_df, x="salary", y="hours-per-week", color="education_category
 fig.show()
 ```
 
+Looking at @fig-line, we can observe that workers with Higher or Secondary educations tend to work longer weekly hours than those with only a Primary education. The interesting case with Primary education employees is that they work long weekly hours at age 10, and this decreases as they age increases.
+
+@fig-boxplot shows us that employees work longer weeks for all education categories with a salary greater than $50k. This indicates that a higher salary job requires more time through the week.
+
 ### Question 2
 
 - Is there a noticable trend between a person’s salary and their sex? 
@@ -166,7 +191,13 @@ fig_2a.update_layout(
 fig_2a.show()
 ```
 
-Now to see the spread by race.
+Here in @fig-sex_barplot we can see for all men and women, significantly more men earn more than $50k as opposed to women (around 25% compared to 10%). 
+
+:::{.callout-important}
+This visual uses relatively old data (1994), it would be nice to compare a more modern visual to this one.
+:::
+
+Now to see the spread by race:
 
 ```{python}
 #| label: fig-percent_race
@@ -186,7 +217,9 @@ fig_2d.update_layout(
 fig_2d.show()
 ```
 
-### Logistic Regression
+@fig-percent_race shows that the majority of the workers from each race category earn less than or equal to $50k. The White and Asian/Pacific Islander groups have the highest percentages of higher-salary (greater thn $50k) earners, over 25%. The other race groups have a lesser precentage of high-earners.  
+
+### Question 3: Logistic Regression
 
 - What characteristics makes a person have a salary greater than $50k or less than $50k, and with what accuracy can it be predicted for a person?
 
@@ -226,7 +259,7 @@ print("")
 print("Classification Report:\n", classification_report(target_test, predictions))
 ```
 
-Let's visualize the top 6 absolute feature coefficients!
+I trained a logistic regression model to try to predict an employee's salary category (>50K or <=50K) based on various personal characteristics (age, sex, marital status, education level, etc.). Let's take a look at the top 6 absolute feature coefficients!
 
 ```{python}
 #| label: fig-logistic_importances
@@ -265,9 +298,11 @@ fig = px.bar(
 fig.show()
 ```
 
+As seen in @fig-logistic_importances, the _capital-gain_ feature greatly affects a person's salary. Capital gain is revenue that you recieve after selling a capital asset. This may include investments and real-estate [@investopedia_capital_gain]. Other important features like _occupation_ and _education_ show us that a good education and important job title will also affect a person's salary.
+
 ### Question 4
 
-- Which US state has the greatest average annual wage and hourly wage?
+- Which US state has the greatest average wage?
 
 ```{python}
 # filter state_wage_stats to only have rows with 'All Occupations' and contain US states
@@ -301,9 +336,11 @@ fig_4map_a.update_layout(margin=dict(l=0, r=0, b=0, t=0),
 fig_4map_a.show()
 ```
 
+The map (@fig-choropleth_hrly_wage) shows that states like New York and California have an average hourly pay of around $37. On the low end, the state of Mississippi has a mean hourly wage of only $22.87.
+
 ### Question 5
 
-- Do high employment levels indicate high average salaries (both hourly and annual)?
+- Do high employment levels indicate high average salaries?
 
 ```{python}
 # prepare population dataset
@@ -320,12 +357,11 @@ pop_merge['EMPLOYMENT_RATE'] = pd.to_numeric(pop_merge['EMPLOYMENT_RATE'])
 pop_merge['EMPLOYMENT_RATE'] = pop_merge['EMPLOYMENT_RATE'].round(4)
 ```
 
-Now I want to visualize the employment rate by state.
-
-It can be noted in @fig-choropleth that for most states the employment rate is between 0.5 and 0.4.
+First I want to visualize the employment rate by state:
 
 ```{python}
 #| label: fig-choropleth
+#| fig-cap: "Employment Rate by State"
 
 fig_5a = px.choropleth(
     pop_merge,
@@ -346,7 +382,7 @@ fig_5a.update_layout(margin=dict(l=0, r=0, b=0, t=0),
 fig_5a.show()
 ```
 
-The bubble chart in @fig-bubble shows the 
+It can be noted in @fig-choropleth that for most states the employment rate is between 0.4 and 0.5. This indicates that of the total state population, 40% to 50% of people in that state are employed. This came as a surprise to me, as I expected a higher employment rate for the US.
 
 ```{python}
 #| label: fig-bubble
@@ -363,23 +399,29 @@ A_filtered['A_MEAN'] = pd.to_numeric(A_filtered['A_MEAN'], errors='coerce')
 A_filtered['A_MEDIAN'] = pd.to_numeric(A_filtered['A_MEDIAN'], errors='coerce')
 
 fig5_b = px.scatter(A_filtered, 
-                 x='POPESTIMATE2023', 
-                 y='EMPLOYMENT_RATE', 
-                 size='A_MEAN',  # Bubble size
+                 x='EMPLOYMENT_RATE', 
+                 y='A_MEAN', 
+                 size='A_MEDIAN',  # Bubble size
                  hover_name='PRIM_STATE', 
                  title="State Population vs. Employment",
                  labels={'TOT_EMP': 'Total Employment', 
                          'A_MEAN': 'Annual Mean Wage',
-                         'POPESTIMATE2023': 'Population',
-                         'EMPLOYMENT_RATE': 'Employment Rate'},
+                         'EMPLOYMENT_RATE': 'Employment Rate',
+                         'A_MEDIAN': 'Annual Median Wage'},
                  size_max=20,  # Limits the max bubble size
-                 color='A_MEAN'  # Color gradient based on wages
+                 color='A_MEDIAN'  # Color gradient based on wages
                 )   
 
 fig5_b.show()
 ```
 
+The bubble chart in @fig-bubble shows that as employment rate increases, so does the annual average salary. This may indicate that with a higher salary, an employee is more liekly to stay in the position. The average median salary becomes greater as the employment rate increases. 
+
+This means that both high-earners and middle-level employees are benefitting in a state with a high employment rate. 
+
 ### Question 6
+
+In the case of IT professions, are there major salary differences between high-earners and middle-level employees?
 
 ```{python}
 # filter data to contain only IT-related professions
@@ -408,29 +450,22 @@ it_job['A_MEDIAN'] = pd.to_numeric(it_job['A_MEDIAN'], errors='coerce')
 # calculate difference between 90th percentile and median annual wage
 it_job['difference_90_med'] = it_job['A_PCT90'] - it_job['A_MEDIAN']
 
-# filter for the state job with the greatest difference
-top_per_state = (
-    it_job
-    .sort_values(['OCC_TITLE', 'PRIM_STATE', 'difference_90_med'], ascending=[False, False, True])
-    .groupby('PRIM_STATE')
-    .head(1)
-)
-
-# drop 'Software Developers' job title to show only 1 job type with greatest difference
-software_analyst_df = top_per_state[top_per_state['OCC_TITLE'] != 'Software Developers']
+# calculate the average difference for each state
+state_avg_diff = it_job.groupby('PRIM_STATE')['difference_90_med'].mean().reset_index()
 ```
 
 ```{python}
-#| label: fig-itjob
+#| label: fig-diff
+#| fig-cap: "Average Difference between 90th percentile and Median Annual Salaries for IT Jobs"
 
 fig_6a = px.choropleth(
-    software_analyst_df,
+    state_avg_diff,
     locations= 'PRIM_STATE',
     locationmode="USA-states",
     color="difference_90_med",
     #color_continuous_scale="Viridis",
     scope="usa",
-    title="Difference between 90th percentile and Median Annual Salaries for Software",
+    title="Average Difference between 90th percentile and Median Annual Salaries for All IT Jobs",
     labels= {
         "difference_90_med": "Difference",
         "PRIM_STATE": "State"},   
@@ -442,6 +477,8 @@ fig_6a.update_layout(margin=dict(l=0, r=0, b=0, t=0),
 
 fig_6a.show()
 ```
+
+We can see from the above graph that New York and California IT professions have the highest divide in yearly salaries bewteen high and middle earners (well over $60,000 difference). 
 
 ### Question 7 
 
@@ -465,8 +502,6 @@ top5_jobs_per_state = (
 )
 ```
 
-Refering to @fig-states
-
 ```{python}
 #| label: fig-states
 #| fig-cap: "Top 5 Occupations by Job per 1000 in NY, NJ, and NE"
@@ -486,10 +521,10 @@ fig7_a.update_layout(showlegend=False)  # hide legend, not needed
 fig7_a.show()
 ```
 
-I also wanted to see if most US states share a common occupation type. Looking at @fig-oneJob, I can see that the majority of states have "Office and Administrative Support Occupations" as the most common type per 1000 jobs. There are three states that have different occupations, that being 
+Referring to @fig-states, I can observe that Nebraska has the same 5 most common jobs as New Jersey. It came as a surprise that New York and New Jersey have different sets of common jobs. Given that the two states are so close, I though that their professions would be quite similar. 
 
 ```{python}
-#| label: fig-oneJob
+#| label: fig-jobb
 
 # filter data for most popular occupation per state
 job_df = state_wage_stats[state_wage_stats['OCC_TITLE'] != 'All Occupations']
@@ -516,11 +551,22 @@ fig7_b = px.choropleth(
 
 fig7_b.show()
 ```
+ 
 
+I also wanted to see if most US states share a common occupation type. After creating @fig-jobb, I can see that the majority of states have "Office and Administrative Support Occupations" as the most common type per 1000 jobs. There are four four that have different occupations, that being Nevada and Hawaii (Food Preparation and Serving Related Occupations), Indiana (Transportation and Material Moving Occupations), and Washington DC (Business and Financial Operations Occupations).
 
-Here's an example of citing a source [see @phil99, pp. 33-35]. Be sure the source information is entered in "BibTeX" form in the `references.bib` file.
-
-
-The bibliography will automatically be generated, listing all sources in the `.bib` file.
 
 ## Conclusion
+
+
+In summary, the project reveals several key takeaways:
+
+- People with a higher education (completed highschool or recieved a college degree), tend to work longer hours than those with only a primary education. 
+- 25% of men have a salary greater than $50k, while around 10% of women have a salary greater than $50k.
+- Capital gains will greatly increase a person's yearly revenue.
+- New York IT jobs have the greatest difference between high-earner and middle-earner salaries. 
+- The most common jobs in the United States belong to the _Office and Administrative Support Occupations_ category.
+
+:::{.callout-note}
+Further information on this project can be found on my [Github](https://github.com/NicknNemkov/capstone).
+:::
