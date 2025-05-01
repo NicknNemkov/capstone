@@ -169,7 +169,7 @@ Looking at @fig-line, we can observe that workers with Higher or Secondary educa
 @fig-boxplot shows us that employees work longer weeks for all education categories with a salary greater than $50k. This indicates that a higher salary job requires more time through the week.
 
 ### Question 2
-#### Sex and Gender Wage Trends
+#### Sex and Race Wage Trends
 
 - Is there a noticable trend between a person’s salary and their sex? 
 - What about their race?
@@ -428,7 +428,7 @@ The bubble chart in @fig-bubble shows that as employment rate increases, so does
 This means that both high-earners and middle-level employees are benefitting in a state with a high employment rate. 
 
 ### Question 6
-#### IT Occupations Cast Study
+#### IT Occupations Case Study
 
 In the case of IT professions, are there major salary differences between high-earners and middle-level employees?
 
