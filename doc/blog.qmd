@@ -72,7 +72,7 @@ state_wage_stats.head()
 
 The _state_M2023_dl.xlsx_ dataset contains the 2023 occupational employment and wage estimates, calculated with
 data collected from employers in all industry sectors in metropolitan and nonmetropolitan
-areas in the US (including US territories).
+areas in the US (including US territories). Each row represents an occupation title, its location in the US, and various wage statistic values (total employment, mean wage estimates, etc.).
 
 __3. NST-EST2023-ALLDATA.csv__
 
@@ -81,12 +81,12 @@ __3. NST-EST2023-ALLDATA.csv__
 population.head()
 ```
 
-This U.S. Cansus Bureau dataset collects the estimated Components of Resident Population
+This U.S. Census Bureau dataset collects the estimated Components of Resident Population
 Change, and Rates of the Components of Resident Population Change for the United States,
-States, District of Columbia, and Puerto Rico from 2020 to 2023.
+States, District of Columbia, and Puerto Rico from 2020 to 2023. Each row represents a US state and its yearly populations along with births and deaths.
 
 :::{.callout-important}
-Only the _POPESTIMATE2023_ column will be used from NST-EST2023-ALLDATA.csv, in order to calculate the employment rate.
+I will be using the 2023 state populations only. This is later used in @fig-choropleth to calaculate the employment rate.
 :::
 
 
@@ -95,9 +95,10 @@ Only the _POPESTIMATE2023_ column will be used from NST-EST2023-ALLDATA.csv, in 
 Now that all datasets are loaded, let's look at the wage statistics through a number of research questions:
 
 ### Question 1
+#### Education Level Analysis
 - Is a job more demanding based on the higher level of education and the age of the
 person? 
-- Does the income level of a job determine how hard a person has to work?
+- Do higher-income workers tend to work longer hours?
 
 ```{python}
 # organize lists for education categories
@@ -140,6 +141,7 @@ fig = px.line(drop_preschool, x="age_decade", y="hours-per-week", color="educati
               labels={"age_decade": "Age", "hours-per-week": "Mean Hours Per Week", "education_category": "Education Level"},
               markers=True)
 
+# make sure text color is black
 fig.update_layout(
     font=dict(
         color='black'
@@ -167,6 +169,7 @@ Looking at @fig-line, we can observe that workers with Higher or Secondary educa
 @fig-boxplot shows us that employees work longer weeks for all education categories with a salary greater than $50k. This indicates that a higher salary job requires more time through the week.
 
 ### Question 2
+#### Sex and Gender Wage Trends
 
 - Is there a noticable trend between a person’s salary and their sex? 
 - What about their race?
@@ -193,7 +196,7 @@ fig_2a.show()
 
 Here in @fig-sex_barplot we can see for all men and women, significantly more men earn more than $50k as opposed to women (around 25% compared to 10%). 
 
-:::{.callout-important}
+:::{.callout-note}
 This visual uses relatively old data (1994), it would be nice to compare a more modern visual to this one.
 :::
 
@@ -219,7 +222,8 @@ fig_2d.show()
 
 @fig-percent_race shows that the majority of the workers from each race category earn less than or equal to $50k. The White and Asian/Pacific Islander groups have the highest percentages of higher-salary (greater thn $50k) earners, over 25%. The other race groups have a lesser precentage of high-earners.  
 
-### Question 3: Logistic Regression
+### Question 3
+#### Salary Category Prediction
 
 - What characteristics makes a person have a salary greater than $50k or less than $50k, and with what accuracy can it be predicted for a person?
 
@@ -301,6 +305,7 @@ fig.show()
 As seen in @fig-logistic_importances, the _capital-gain_ feature greatly affects a person's salary. Capital gain is revenue that you recieve after selling a capital asset. This may include investments and real-estate [@investopedia_capital_gain]. Other important features like _occupation_ and _education_ show us that a good education and important job title will also affect a person's salary.
 
 ### Question 4
+#### State Average Salary Analysis
 
 - Which US state has the greatest average wage?
 
@@ -339,6 +344,7 @@ fig_4map_a.show()
 The map (@fig-choropleth_hrly_wage) shows that states like New York and California have an average hourly pay of around $37. On the low end, the state of Mississippi has a mean hourly wage of only $22.87.
 
 ### Question 5
+#### Employment Rate Analysis
 
 - Do high employment levels indicate high average salaries?
 
@@ -420,6 +426,7 @@ The bubble chart in @fig-bubble shows that as employment rate increases, so does
 This means that both high-earners and middle-level employees are benefitting in a state with a high employment rate. 
 
 ### Question 6
+#### IT Occupations Cast Study
 
 In the case of IT professions, are there major salary differences between high-earners and middle-level employees?
 
@@ -480,7 +487,8 @@ fig_6a.show()
 
 We can see from the above graph that New York and California IT professions have the highest divide in yearly salaries bewteen high and middle earners (well over $60,000 difference). 
 
-### Question 7 
+### Question 7
+#### US State Profession Case Study
 
 - <b>Case Study</b>: Does a rural state like Nebraska share similar professions to New York and
 New Jersey?
