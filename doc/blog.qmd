@@ -94,8 +94,7 @@ I will be using the 2023 state populations only. This is later used in @fig-chor
 
 Now that all datasets are loaded, let's look at the wage statistics through a number of research questions:
 
-### Question 1
-#### Education Level Analysis
+### Education Level Analysis
 - Is a job more demanding based on the higher level of education and the age of the
 person? 
 - Do higher-income workers tend to work longer hours?
@@ -168,11 +167,9 @@ Looking at @fig-line, we can observe that workers with Higher or Secondary educa
 
 @fig-boxplot shows us that employees work longer weeks for all education categories with a salary greater than $50k. This indicates that a higher salary job requires more time through the week.
 
-### Question 2
-#### Sex and Race Wage Trends
+### Sex and Race Wage Trends
 
-- Is there a noticable trend between a person’s salary and their sex? 
-- What about their race?
+- Is there a noticable trend between a person’s salary and their sex, what about their race?
 
 ```{python}
 #| label: fig-sex_barplot
@@ -222,11 +219,13 @@ fig_2d.show()
 
 @fig-percent_race shows that the majority of the workers from each race category earn less than or equal to $50k. The White and Asian/Pacific Islander groups have the highest percentages of higher-salary (greater thn $50k) earners, over 25%. The other race groups have a lesser precentage of high-earners.  
 
-### Question 3
-#### Salary Category Prediction
 
-- What characteristics makes a person have a salary greater than $50k or less than $50k, and with what accuracy can it be predicted for a person?
+### Salary Category Prediction
 
+- What personal characteristics are predictive of a salary greater than $50,000?
+
+
+I trained a logistic regression model to try to predict an employee's salary category (greater than $50,000 or  less than or equal to $50,000) based on various personal characteristics (age, sex, marital status, education level, etc.).
 ```{python}
 #| label: fig-logistic_accuracy
 
@@ -265,7 +264,19 @@ print("")
 print("Classification Report:\n", classification_report(target_test, predictions))
 ```
 
-I trained a logistic regression model to try to predict an employee's salary category (>50K or <=50K) based on various personal characteristics (age, sex, marital status, education level, etc.). Let's take a look at the top 6 absolute feature coefficients!
+Looking at the precision and recall from @fig-logistic_accuracy:
+
+_Precision_: 
+
+- When the model predicts a person to earn <=$50,000, it is correct 88% of the time.
+- When predicting a salary greater than $50,000 The logistic regression model is 75% correct in all cases.
+
+_Recall_:
+
+- The model successfully identifies 93% of all actual <=$50,000 salary cases.
+- Of all actual cases of greater than $50,000 salaries, 61% are correctly identified.
+
+Let's also take a look at the absolute feature coefficients:
 
 ```{python}
 #| label: fig-logistic_importances
@@ -282,12 +293,12 @@ aggregated_importance = importance_df.groupby("Original Feature")["Importance"].
 aggregated_importance = aggregated_importance.sort_values(ascending=False)
 
 # feature importance bar plot
-top_5 = aggregated_importance[:6].sort_values(ascending=False).reset_index()
-top_5.columns = ['Original Feature', 'Value']
+features = aggregated_importance.sort_values(ascending=False).reset_index()
+features.columns = ['Original Feature', 'Value']
 
 # Create the bar plot
 fig = px.bar(
-    top_5,
+    features,
     x='Value',
     y='Original Feature',
     orientation='h',
@@ -297,7 +308,7 @@ fig = px.bar(
         "Value": "Coefficient Value"
     },
     category_orders={
-        "Original Feature": top_5['Original Feature'].tolist()
+        "Original Feature": features['Original Feature'].tolist()
     }
 )
 
@@ -306,10 +317,9 @@ fig.show()
 
 As seen in @fig-logistic_importances, the _capital-gain_ feature greatly affects a person's salary. Capital gain is revenue that you recieve after selling a capital asset. This may include investments and real-estate [@investopedia_capital_gain]. Other important features like _occupation_ and _education_ show us that a good education and important job title will also affect a person's salary.
 
-### Question 4
-#### State Average Salary Analysis
+### State Average Salary Analysis
 
-- Which US state has the greatest average wage?
+- Is there high wage variation among the US states in terms of mean hourly salary?
 
 ```{python}
 # filter state_wage_stats to only have rows with 'All Occupations' and contain US states
@@ -343,10 +353,9 @@ fig_4map_a.update_layout(margin=dict(l=0, r=0, b=0, t=0),
 fig_4map_a.show()
 ```
 
-The map (@fig-choropleth_hrly_wage) shows that states like New York and California have an average hourly pay of around $37. On the low end, the state of Mississippi has a mean hourly wage of only $22.87.
+The map (@fig-choropleth_hrly_wage) shows that states like New York and California have an average hourly pay of around $37. On the low end, the state of Mississippi has a mean hourly wage of only $22.87. The majority of the states have an hourly salary of slightly below $30.
 
-### Question 5
-#### Employment Rate Analysis
+### Employment Rate Analysis
 
 - Do high employment levels indicate high average salaries?
 
@@ -427,10 +436,9 @@ The bubble chart in @fig-bubble shows that as employment rate increases, so does
 
 This means that both high-earners and middle-level employees are benefitting in a state with a high employment rate. 
 
-### Question 6
-#### IT Occupations Case Study
+### IT Occupations Case Study
 
-In the case of IT professions, are there major salary differences between high-earners and middle-level employees?
+- In the case of IT professions, are there major salary differences between high-earners and middle-level employees?
 
 ```{python}
 # filter data to contain only IT-related professions
@@ -489,11 +497,10 @@ fig_6a.show()
 
 We can see from the above graph that New York and California IT professions have the highest divide in yearly salaries bewteen high and middle earners (well over $60,000 difference). 
 
-### Question 7
-#### US State Profession Case Study
+### US State Profession Case Study
 
-- <b>Case Study</b>: Does a rural state like Nebraska share similar professions to New York and
-New Jersey?
+- Does a rural state like Nebraska share similar professions to urban states like New York and New Jersey?
+- What is the most common occupation across the United States?
 
 ```{python}
 # filter data for only the three states
