@@ -223,7 +223,27 @@ fig_2d.show()
 - What personal characteristics are predictive of a salary greater than $50,000?
 
 
-I trained a logistic regression model to try to predict an employee's salary category (greater than $50,000 or  less than or equal to $50,000) based on various personal characteristics (age, sex, marital status, education level, etc.).
+The goal was to understand which personal characteristic affects a person's salary the most. I trained a logistic regression model to try to predict an employee's salary category (greater than $50,000 or  less than or equal to $50,000) based on those characteristics (age, sex, marital status, education level, etc.).
+
+Here is a full description of all features:
+
+| Feature | Description |
+|---------|:-----:|
+| age       | Person's age.   |
+| workclass | Type of employment (private, self employed, etc.) |
+| education | Education level |
+| education-num | Education Numerical value. |
+| marital-status | Marital status.  |
+| occupation | Type of job. |
+| relationship |  Familial status (Wife, Husband, Child, etc.)  |
+| race | Person's race.  |
+| sex | Person's sex.  |
+| capital-gain | Money gained from assets (investments, real-estate). |
+| capital-loss | Money lost on your assets at the end of the year. |
+| hours-per-week | Hours worked per week. |
+| native-country | Country of birth. |
+| fnlwgt | "Final Weight" for standardizing other characteristics. |
+
 ```{python}
 #| label: fig-logistic_accuracy
 
@@ -313,7 +333,7 @@ fig = px.bar(
 fig.show()
 ```
 
-As seen in @fig-logistic_importances, the _capital-gain_ feature greatly affects a person's salary. Capital gain is revenue that you recieve after selling a capital asset. This may include investments and real-estate [@investopedia_capital_gain]. Other important features like _occupation_ and _education_ show us that a good education and important job title will also affect a person's salary.
+As seen in @fig-logistic_importances, the _capital-gain_ feature greatly affects a person's salary. Capital gain is revenue that you recieve after selling a capital asset. This may include investments and real-estate [@investopedia_capital_gain]. Other important features like _occupation_ and _education_ show us that a good education and important job title will also affect a person's salary. Features like _hour-per-week_ and _capital-loss_ have a much lesser effect on a person's salary.
 
 ### State Average Salary Analysis
 
@@ -431,7 +451,7 @@ fig5_b = px.scatter(A_filtered,
 fig5_b.show()
 ```
 
-The bubble chart in @fig-bubble shows that as employment rate increases, so does the annual average salary. This may indicate that with a higher salary, an employee is more liekly to stay in the position. The average median salary becomes greater as the employment rate increases. 
+The bubble chart in @fig-bubble shows that as employment rate increases, so does the annual average salary. This may indicate that with a higher salary, an employee is more likely to stay in the position. The average median salary becomes greater as the employment rate increases. 
 
 This means that both high-earners and middle-level employees are benefitting in a state with a high employment rate. 
 
