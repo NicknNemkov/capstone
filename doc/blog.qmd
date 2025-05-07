@@ -70,9 +70,7 @@ __2. state_M2023_dl.xlsx__
 state_wage_stats.head()
 ```
 
-The _state_M2023_dl.xlsx_ dataset contains the 2023 occupational employment and wage estimates, calculated with
-data collected from employers in all industry sectors in metropolitan and nonmetropolitan
-areas in the US (including US territories). Each row represents an occupation title, its location in the US, and various wage statistic values (total employment, mean wage estimates, etc.).
+The _state_M2023_dl.xlsx_ dataset is sourced from the US Bureau of Labor Statistics contains the 2023 occupational employment and wage estimates, calculated with data collected from employers in all industry sectors in metropolitan and nonmetropolitan areas in the US (including US territories). Each row represents an occupation title, its location in the US, and various wage statistic values (total employment, mean wage estimates, etc.).
 
 __3. NST-EST2023-ALLDATA.csv__
 
@@ -95,8 +93,7 @@ I will be using the 2023 state populations only. This is later used in @fig-chor
 Now that all datasets are loaded, let's look at the wage statistics through a number of research questions:
 
 ### Education Level Analysis
-- Is a job more demanding based on the higher level of education and the age of the
-person? 
+- Are longer weekly hour demanded on a job based on a level of education and greater age?
 - Do higher-income workers tend to work longer hours?
 
 ```{python}
@@ -169,7 +166,8 @@ Looking at @fig-line, we can observe that workers with Higher or Secondary educa
 
 ### Sex and Race Wage Trends
 
-- Is there a noticable trend between a person’s salary and their sex, what about their race?
+- Is there a noticable trend between a person’s salary and their sex?
+- Does a person's race influence his income?
 
 ```{python}
 #| label: fig-sex_barplot
@@ -319,7 +317,8 @@ As seen in @fig-logistic_importances, the _capital-gain_ feature greatly affects
 
 ### State Average Salary Analysis
 
-- Is there high wage variation among the US states in terms of mean hourly salary?
+- Is there high wage variation among the US states in terms of mean hourly salary? 
+- Does geographic location influence income?
 
 ```{python}
 # filter state_wage_stats to only have rows with 'All Occupations' and contain US states
@@ -353,7 +352,7 @@ fig_4map_a.update_layout(margin=dict(l=0, r=0, b=0, t=0),
 fig_4map_a.show()
 ```
 
-The map (@fig-choropleth_hrly_wage) shows that states like New York and California have an average hourly pay of around $37. On the low end, the state of Mississippi has a mean hourly wage of only $22.87. The majority of the states have an hourly salary of slightly below $30.
+The map (@fig-choropleth_hrly_wage) shows that states like New York and California have an average hourly pay of around $37. On the low end, the state of Mississippi has a mean hourly wage of only $22.87. The majority of the states have an hourly salary of slightly below $30. We can also see that the East Coast and West Coast have the higher salaries, probably due to those areas being high tech sectors.
 
 ### Employment Rate Analysis
 
